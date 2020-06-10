@@ -14,7 +14,8 @@ import { ProductListComponent } from './component/product-list/product-list.comp
 import { EmployeeLoginComponent } from './component/employee-login/employee-login.component';
 import { ShowListComponent } from './component/show-list/show-list.component';
 import { ProductDetailComponent } from './component/product-detail/product-detail.component';
-import { OrderHistoryComponent } from './component/order-history/order-history.component'
+import { OrderHistoryComponent } from './component/order-history/order-history.component';
+import { OrderStatusComponent } from './component/order-status/order-status.component'
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { OrderHistoryComponent } from './component/order-history/order-history.c
     EmployeeLoginComponent,
     ShowListComponent,
     ProductDetailComponent,
-    OrderHistoryComponent
+    OrderHistoryComponent,
+    OrderStatusComponent
   ],
   imports: [
     BrowserModule,

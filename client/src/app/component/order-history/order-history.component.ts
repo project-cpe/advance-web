@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router} from '@angular/router';
 //import { AddListService } from 'src/app/service/add-list.service';
+import { LocalStorageService } from 'angular-web-storage';
 
 @Component({
   selector: 'app-order-history',
@@ -11,7 +12,7 @@ export class OrderHistoryComponent implements OnInit {
 
   term: string;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private local: LocalStorageService) { }
 
   ngOnInit(): void {
   }
@@ -20,7 +21,11 @@ export class OrderHistoryComponent implements OnInit {
     this.router.navigate(['/home']);
   }
 
-  
+  getUsername(){
+    //let user = localStorage.getItem("Emusername");
+    let user = this.local.get('customer').result.username;
+    return user;
+  }
 
   
 

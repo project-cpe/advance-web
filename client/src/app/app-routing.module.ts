@@ -8,6 +8,8 @@ import { EmployeeLoginComponent } from './component/employee-login/employee-logi
 import { ShowListComponent } from './component/show-list/show-list.component';
 import { ProductDetailComponent } from './component/product-detail/product-detail.component';
 import { OrderHistoryComponent } from './component/order-history/order-history.component';
+import { OrderStatusComponent } from './component/order-status/order-status.component';
+
 
 
 const routes: Routes = [
@@ -19,7 +21,8 @@ const routes: Routes = [
   { path: 'loginem', component: EmployeeLoginComponent},
   { path: 'showlist', component: ShowListComponent},
   { path: 'productdetail/:id', component: ProductDetailComponent},
-  { path: 'orderhistory', component: OrderHistoryComponent}
+  { path: 'orderhistory', component: OrderHistoryComponent},
+  { path: 'orderstatus', component: OrderStatusComponent}
 
 ];
 
