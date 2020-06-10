@@ -84,7 +84,7 @@ export class AddListComponent implements OnInit {
           this.submitted = true;
           alert("เพิ่มสำเร็จ !");
           //window.location.reload();
-          //this.dataList.reset();
+          this.dataList.reset();
         },
         error => {
           console.log(error);
