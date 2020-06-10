@@ -11,7 +11,7 @@
                 </ul>
                 <ul class="navbar-nav mr auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">สถานะคำสั่งซื้อ</a>
+                        <a class="nav-link" href="/orderstatus">สถานะคำสั่งซื้อ</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/orderhistory">ประวัติการสั่งซื้อ</a>
@@ -38,7 +38,7 @@
     <div class="row">
         <div class="col-sm-3" *ngFor="let item of (getAllData()| filter:term) index as i">
             <div class="card mb-3" style="box-shadow: 0 0 10px #666;">
-                <img class="card-img-top" [src]="item.img" alt="Card image cap">
+                <img class="card-img-top" [src]="item.img" alt="Card image cap" >
                 <div class="card-body">
                     <p class="card-text">{{item.nameCargo}}</p>
                     <p class="card-text"> <a class="btn btn-warning btn-sm" href="/productdetail/{{item._id}}" role="button">ดูข้อมูล</a> ราคา : <span>{{item.price | number}}</span> บาท
