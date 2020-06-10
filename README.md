@@ -20,6 +20,8 @@
 #### backend
 1. npm i nodemon -g --save-dev
 2. npm install express mongoose body-parser cors --save
+3. npm install bcryptjs
+4. npm install jsonwebtoken
 
 #### mongoDB
 in CMD for start server MongoDB
