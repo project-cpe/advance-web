@@ -1,0 +1,82 @@
+<html>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/productlist">Phone-Shop</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">สถานะคำสั่งซื้อ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/orderhistory">ประวัติการสั่งซื้อ</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    &nbsp;
+                    <a href="#" class="btn btn-dark" data-toggle="modal" data-target="#myModal">
+                        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart
+                        <span class="badge badge-info"></span>
+                    </a>
+                    <li class="nav-item">
+                        <a class="nav-link" readonly>สวัสดี! คุณ {{getUsername()}}</a>
+                    </li>
+                </ul>
+            </div>
+            <form class="ml-md-2 my-2 my-lg-0">
+                <button type="button" (click)="Logout()" class="btn btn-danger">ออกจากระบบ</button>
+            </form>
+        </div>
+    </nav>
+<br>
+<div class="container">
+    <html lang="en">
+
+    <head>
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+    </head>
+
+    <body>
+
+        <div class="container">
+            <div class="card">
+                <div class="container-fliud">
+                    <div class="wrapper row">
+                        <div class="preview col-md-6">
+                            <div class="pic-sample" id="pic-1"><img src="{{product.img}}" /></div>
+                        </div>
+                        <div class="details col-md-6">
+                            <h2 class="product-title">{{product.nameCargo}}</h2>
+                            <h6 class="product-description"><strong>• ระบบปฏิบัติการ &nbsp;:</strong> {{product.typeOS}}</h6>
+                            <h6 class="product-description"><strong>• ขนาดหน้าจอ : </strong>{{product.size}}</h6>
+                            <h6 class="product-description"><strong>• ความละเอียดหน้าจอ :</strong> {{product.display}}</h6>
+                            <h6 class="product-description"><strong>• หน่วยประมวลผล :</strong> {{product.cpu}} </h6>
+                            <h6 class="product-description"><strong>• หน่วยความจำ : </strong></h6>
+                            <h6 class="product-description">&nbsp; - RAM {{product.ram}}GB<br> &nbsp; - ROM {{product.rom}}GB </h6>
+                            <h6 class="product-description"><strong>• กล้องหน้า :</strong> {{product.camFace}} ล้านพิกเซล</h6>
+                            <h6 class="product-description"><strong>• กล้องหน้า :</strong> {{product.camBack}} ล้านพิกเซล</h6>
+                            <h6 class="product-description"><strong>• รองรับ 2 ซิม :</strong> {{product.twoSim}} </h6>
+                            <br>
+                            <h4 class="price">Price : <span>{{product.price | number}} </span>บาท</h4>
+
+                            <div class="action">
+                                <button class="add-to-cart btn btn-default" type="button">add to cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+
+    </html>
+
+    <div class="row">
+
+
+    </div>
+</div>
+<html>

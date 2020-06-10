@@ -1,0 +1,124 @@
+<div class="card text-back bg-primary mb-3">
+    <div class="card-body">
+        <h2 class="card-title">Register</h2>
+        <div class="card">
+            <div class="card-body">
+                <form [formGroup]="registerForm" style="text-align: left;">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputFirtN">First Name</label>
+                            <input type="text" class="form-control" formControlName='firstName' placeholder="First Name">
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="inputLastN">Last Name</label>
+                            <input type="text" class="form-control" formControlName='lastName' placeholder="Last Name">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-1">Gender: </div>
+                        <div class="form-check form-check-inline">
+                            <label class="form-check-label">
+                            <input class="form-check-input" type="radio" name="sex" value="Male" formControlName='sex'> Male
+                        </label>
+                        </div>
+
+                        <div class="form-check form-check-inline">
+                            <label class="form-check-label">
+                            <input class="form-check-input" type="radio" name="sex" value="Female" formControlName='sex'> Female
+                        </label>
+                        </div>
+                    </div>
+                    <br/>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="username">Username</label>
+                            <input type="text" class="form-control" formControlName='username' placeholder="Dek_Kong">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" formControlName='email' placeholder="name@example.com">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" formControlName='password' placeholder="Password">
+                            <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+                                <div *ngIf="password.errors.required">
+                                    Password is required
+                                </div>
+                                <div *ngIf="password.errors.pattern">
+                                    Your Password is incorrect!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="tel">Tel.</label>
+                            <input type="text" class="form-control" formControlName='tel' placeholder="0xx-xxxxxxx">
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <div formGroupName="address">
+                                <h5>ที่อยู่</h5>
+                                <div class="form-row">
+                                    <div class="form-group col-md-8">
+                                        <label for="street">บ้านเลขที่, หมู่ที่</label>
+                                        <input class="form-control" formControlName='Hnum' placeholder="บ้านเลขที่ 1 หมู่ 1">
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="parish">แขวง/ตำบล</label>
+                                        <input type="text" class="form-control" formControlName='parish'>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-4">
+                                        <label for="district">เขต/อำเภอ</label>
+                                        <input class="form-control" formControlName='district'>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="province">จังหวัด</label>
+                                        <input class="form-control" formControlName='province'>
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <label for="zip">รหัสไปรษณีย์</label>
+                                        <input type="text" class="form-control" formControlName='zip'>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="form-group">
+                        <div class="form-check">
+                            <input class="form-check-input" name="check" type="checkbox" value="false" formControlName='check'>
+                            <label class="form-check-label" for="check">
+                      Check me out
+                    </label>
+                        </div>
+                    </div>
+
+                    <button (click)="saveRegister()" type="submit" class="btn btn-primary">Submit</button>
+                </form>
+                <br/>
+                <!--div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Display : </h4>
+                        <p class="card-text">
+                            {{ registerForm.value|json }}
+                        </p>
+                        <p class="card-text">
+                            Form Status: {{ registerForm.status|json }}
+                        </p>
+                    </div>
+                </div-->
+            </div>
+        </div>
+    </div>
+</div>

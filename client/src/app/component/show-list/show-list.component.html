@@ -1,0 +1,177 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand">Phone-Shop</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            work
+                        </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="/addlist">Add new Product</a>
+                    </div>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <a class="btn btn-info" role="button">
+                    <i class="fa fa-user-secret" aria-hidden="true"></i>
+                </a>
+                <li class="nav-item">
+                    <a class="nav-link" readonly>{{getUsername()}}</a>
+                </li>
+            </ul>
+        </div>
+        <form class="ml-md-2 my-2 my-lg-0">
+            <a class="btn btn btn-danger" (click)="Logout()" role="button">Log Out</a>
+        </form>
+    </div>
+</nav>
+<br>
+
+<div class="container">
+    <div class="form-row">
+        <div class="col-md-12 mb-3 form-inline">
+            <a class="btn" readonly>
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </a>
+            <input type="text" class="form-control" placeholder="Search Here" [(ngModel)]="term">
+        </div>
+    </div>
+</div>
+<table class="table table-bordered table-striped table-dark">
+    <thead>
+        <tr>
+            <th>ลำดับ</th>
+            <th>รูป</th>
+            <th>ชื่อสินค้า</th>
+            <th>ระบบประฏิบัติการ</th>
+            <th>ราคา (บาท)</th>
+            <th>จำนวน (เครื่อง)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of (getAllData() | filter:term) index as i">
+            <td scope="row">{{i+1}}</td>
+            <td>
+                <img [src]="item.img" class="mr-4" style="width: 100px">
+            </td>
+            <td>{{item.nameCargo}}</td>
+            <td>{{item.typeOS}}</td>
+            <td>{{item.price | number}}</td>
+            <td>{{item.quantity}}</td>
+            <td>
+                <div class="form-row">
+                    <div class="col-md-5">
+                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" (click)="getSomeData(item._id)"><i class="fa fa-pencil-square-o" aria-hidden="true">แก้ไข</i></button>
+                    </div>
+                    <div class="col-md-5">
+                        <button type="button" class="btn btn-danger" (click)="deleteProduct(item._id)"><i class="fa fa-trash" aria-hidden="true">ลบ</i></button>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">แก้ไขสินค้า</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="dataLists">
+                    <div class="form">
+                        <label for="recipient-name" class="col-form-label">ชื่อสินค้า: <u><i><b>{{product.nameCargo}}</b></i></u></label>
+                        <input type="text" class="form-control" formControlName='nameCargo' required>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="message-text" class="col-form-label">จำนวนสินค้า: <u><i><b>{{product.quantity}}</b></i></u> เครื่อง</label>
+                            <input type="number" formControlName="quantity" class="form-control" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="message-text" class="col-form-label">ราคา: <u><i><b>{{(product.price | number)}}</b></i></u> บาท</label>
+                            <input type="text" class="form-control" formControlName='price' required>
+                        </div>
+                    </div>
+                    <div formGroupName="detail">
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label for="message-text" class="col-form-label">ระบบประฏิบัติการ: <u><i><b>{{product.typeOS}}</b></i></u></label>
+                                <select class="browser-default custom-select" formControlName="typeOS" class="form-control">
+                                    <option *ngFor="let os of getAllProOS()">{{os.os_name}}</option>
+                                  </select>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="message-text" class="col-form-label">จอแสดงผล: <u><i><b>{{product.display}}</b></i></u></label>
+                                <input type="text" class="form-control" formControlName='display' required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-4">
+                                <label for="message-text" class="col-form-label">ROM: <u><i><b>{{product.rom}}</b></i></u> GB</label>
+                                <input type="text" formControlName="rom" class="form-control" required>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="message-text" class="col-form-label">ความจำภายนอก: <u><i><b>{{product.externalDrive}}</b></i></u> GB</label>
+                                <input type="text" class="form-control" formControlName='externalDrive' required>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="message-text" class="col-form-label">แบตเตอรี่: <u><i><b>{{product.batt}}</b></i></u> mAh</label>
+                                <input type="text" class="form-control" formControlName='batt' required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            รูปสินค้า
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <input type="file" class="form-control-file" formControlName='file' accept="image/*" ngf-max-size="2MB" (change)="onChangeImg($event)">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-3">
+
+                        </div>
+                        <div class="col-md-9">
+                            <img *ngIf="previewLoaded" class="img-thumbnail" [src]="this.dataLists.value.img" style="height:150px;">
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card mb-3" style="box-shadow: 0 0 10px #666;">
+                                <img class="card-img-top" [src]="product.img" alt="Card image cap">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" (click)="updateProduct(product._id)">บันทึกข้อมูล</button>
+            </div>
+        </div>
+        <!--div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Display : </h4>
+                <p class="card-text">
+                    {{ dataLists.value|json }}
+                </p>
+                <p class="card-text">
+                    Form Status: {{ dataLists.status|json }}
+                </p>
+            </div>
+        </div-->
+    </div>
+</div>

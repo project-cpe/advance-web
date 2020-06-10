@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css?family=Numans');
+.bg-text {
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/opacity/see-through */
+    color: white;
+    font-weight: bold;
+    border: 3px solid #f1f1f1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 40%;
+    padding: 20px;
+    text-align: center;
+}
+
+.bg-text2 {
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/opacity/see-through */
+    color: rgb(31, 29, 29);
+    font-weight: bold;
+    border: 2px solid #8f8181;
+    /*z-index: 2;*/
+}
+
+.color-front {
+    color: black;
+    font-weight: bold;
+    border: 3px solid #f1f1f1;
+    text-align: left;
+}
+
+.card-header {
+    color: black;
+    font-weight: bold;
+    border: 3px solid #f1f1f1;
+    text-align: center;
+}
+
+.text-center {
+    text-align: center;
+    word-spacing: 10pt;
+}
+
+.bg {
+    background: url(/../../assets/image/Em-Login.jpeg);
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+    height: 695px;
+    font-family: 'Numans', sans-serif;
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.card {
+    height: 370px;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 400px;
+    background-color: rgba(0, 0, 0, 0.5) !important;
+}
+
+.social_icon span:hover {
+    color: white;
+    cursor: pointer;
+}
+
+.card-header h3 {
+    color: white;
+}
+
+.social_icon {
+    position: absolute;
+    right: 20px;
+    top: -45px;
+}
+
+.input-group-prepend span {
+    width: 50px;
+    background-color: rgb(189, 52, 86);
+    color: black;
+    border: 0 !important;
+}
+
+input:focus {
+    outline: 0 0 0 0 !important;
+    box-shadow: 0 0 0 0 !important;
+}
+
+.login_btn {
+    color: black;
+    background-color: rgb(233, 87, 76);
+    width: 100px;
+}
+
+.login_btn:hover {
+    color: black;
+    background-color: white;
+}
+
+.container {
+    height: 100%;
+    align-content: center;
+}

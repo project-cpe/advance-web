@@ -1,0 +1,190 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand">Phone-Shop</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            work
+                        </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="/showlist">show product list</a>
+                    </div>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <a class="btn btn-info" role="button">
+                    <i class="fa fa-user-secret" aria-hidden="true"></i>
+                </a>
+                <li class="nav-item">
+                    <a class="nav-link" readonly>{{getUsername()}}</a>
+                </li>
+            </ul>
+        </div>
+        <form class="ml-md-2 my-2 my-lg-0">
+            <a class="btn btn-danger" (click)="Logout()" role="button">Log Out</a>
+        </form>
+    </div>
+</nav>
+<div class="card text-back mb-3 text-center">
+    <div class="card-body">
+        <h1 class="card-title">เพิ่มรายการสินค้า</h1>
+        <form [formGroup]="dataList" style="text-align: left;">
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label for="nameCargo">ชื่อสินค้า</label>
+                    <input type="text" class="form-control" formControlName='nameCargo' placeholder="i-Phone" required>
+                    <div class="valid-tooltip">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="type">ประเภทสินค้า</label>
+                    <select class="browser-default custom-select" formControlName="type" class="form-control">
+                        <option selected>--กรุณาเลือก--</option>
+                        <option *ngFor="let type of getAllProType()">{{type.t_name}}</option>
+                      </select>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <div formGroupName="detail">
+                        <h5>รายละเอียดสินค้า</h5>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="produceDate">ผลิตวันที่</label>
+                                <input type="date" class="form-control" formControlName='produceDate'>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="typeOS">ระบบประฏิบัติการ</label>
+                                <select class="browser-default custom-select" formControlName="typeOS" class="form-control">
+                                    <option selected>--กรุณาเลือก--</option>
+                                    <option *ngFor="let os of getAllProOS()">{{os.os_name}}</option>
+                                  </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label for="size">ขนาดจอ(นิ้ว)</label>
+                                <input type="text" class="form-control" formControlName='size'>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="display">จอแสดงผล</label>
+                                <input type="text" class="form-control" formControlName='display'>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="cpu">CPU</label>
+                                <input type="text" class="form-control" formControlName='cpu'>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label for="ram">RAM(GB)</label>
+                                <input type="text" class="form-control" formControlName='ram'>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="rom">ROM(GB)</label>
+                                <input type="text" class="form-control" formControlName='rom'>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="externalDrive">หน่วยความจำภายนอก(GB)</label>
+                                <input type="text" class="form-control" formControlName='externalDrive'>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label for="camFace">กล้องดิจิตอลหน้า</label>
+                                <input type="text" class="form-control" formControlName='camFace'>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="camBack">กล้องดิจิตอลหลัง</label>
+                                <input type="text" class="form-control" formControlName='camBack'>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="batt">แบตเตอรี่(mAh)</label>
+                                <input type="text" class="form-control" formControlName='batt'>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-1">รองรับ 2 ซิม</div>
+                            <div class="form-check form-check-inline">
+                                <label class="form-check-label">
+                                <input class="form-check-input" type="radio" name="twoSim" value="YES" formControlName='twoSim'> YES
+                            </label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <label class="form-check-label">
+                                <input class="form-check-input" type="radio" name="twoSim" value="NO" formControlName='twoSim'> NO
+                            </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br/>
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label for="codeCargo">รหัสสินค้า</label>
+                    <input type="text" class="form-control" formControlName='codeCargo' placeholder="ABC-CDEFG-HIJKLMN" required>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label for="quantity">จำนวนสินค้า(เครื่อง)</label>
+                    <input type="number" formControlName="quantity" class="form-control" ng-reflect-name="quantity" required>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label for="price">ราคา(บาท)</label>
+                    <input type="text" class="form-control" formControlName='price' placeholder="xx,xxx.xx" required>
+                </div>
+            </div>
+            <!--div class="form-row">
+                <div class="form-group col-md-8">
+                    <label for="image">รูปสินค้า</label>
+                    <input type="text" class="form-control" formControlName='image' placeholder="http://...." required>
+                </div>
+            </div-->
+            <div class="row">
+                <div class="col-md-1">
+                    รูปสินค้า
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <input type="file" class="form-control-file" formControlName='file' accept="image/*" ngf-max-size="2MB" (change)="onChangeImg($event)">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3">
+
+                </div>
+                <div class="col-md-9">
+                    <img *ngIf="previewLoaded" class="img-thumbnail" [src]="this.dataList.value.img" style="height:150px;">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <button type="button" class="btn btn-primary" (click)="saveDataList()">บันทึกข้อมูล</button>&nbsp;
+                    <button type="reset" class="btn btn-danger" (click)="resetForm()">ล้างข้อมูล</button>
+                </div>
+            </div>
+        </form>
+        <br/>
+        <!--div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Display : </h4>
+                <p class="card-text">
+                    {{ dataList.value|json }}
+                </p>
+                <p class="card-text">
+                    Form Status: {{ dataList.status|json }}
+                </p>
+            </div>
+        </div-->
+    </div>
+</div>
