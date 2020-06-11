@@ -11,7 +11,9 @@ exports.create = (req, res) => {
         nameCargo: req.body.nameCargo,
         img: req.body.img,
         price: req.body.price,
-        quantity: req.body.quantity
+        quantity: req.body.quantity,
+        file: req.body.file
+
     });
 
     cart
@@ -51,5 +53,4 @@ exports.findCartUser = (req, res) => {
                 message: err.message || "No item in your cart"
             });
         });
-    
 }
