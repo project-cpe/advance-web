@@ -44,12 +44,12 @@
         <div class="container">
             <div class="card">
                 <div class="container-fliud">
-                    <div class="wrapper row">
+                    <div class="wrapper row" [formGroup]="dataList">
                         <div class="preview col-md-6">
                             <div class="pic-sample" id="pic-1"><img src="{{product.img}}" /></div>
                         </div>
                         <div class="details col-md-6">
-                            <h2 class="product-title">{{product.nameCargo}}</h2>
+                            <h2 class="product-title"  >{{product.nameCargo}}</h2>
                             <h6 class="product-description"><strong>• ระบบปฏิบัติการ &nbsp;:</strong> {{product.typeOS}}</h6>
                             <h6 class="product-description"><strong>• ขนาดหน้าจอ : </strong>{{product.size}}</h6>
                             <h6 class="product-description"><strong>• ความละเอียดหน้าจอ :</strong> {{product.display}}</h6>
@@ -59,11 +59,11 @@
                             <h6 class="product-description"><strong>• กล้องหน้า :</strong> {{product.camFace}} ล้านพิกเซล</h6>
                             <h6 class="product-description"><strong>• กล้องหน้า :</strong> {{product.camBack}} ล้านพิกเซล</h6>
                             <h6 class="product-description"><strong>• รองรับ 2 ซิม :</strong> {{product.twoSim}} </h6>
+                            <h4 class="price">ราคา : <span>{{product.price | number}} </span>บาท</h4>
                             <br>
-                            <h4 class="price">Price : <span>{{product.price | number}} </span>บาท</h4>
-
                             <div class="action">
-                                <button class="add-to-cart btn btn-default" type="button">add to cart</button>
+                                <h3 class="product-description"><strong>จำนวน : </strong> <input  formControlName='quantity' type="number" value="1" min="1" max="10" step="1"/> </h3>
+                                <button class="add-to-cart btn btn-default" type="button" (click)="saveDataList()">add to cart</button>
                             </div>
                         </div>
                     </div>

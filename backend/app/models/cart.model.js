@@ -5,6 +5,7 @@ module.exports = mongoose => {
         img: { type: String },
         price: { type: Number },
         quantity: { type: Number, required: true },
+        file: { type: String },
         date: { type: Date, default: Date.now }
     }, { timestamps: true });
 
