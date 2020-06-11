@@ -15,7 +15,8 @@ import { EmployeeLoginComponent } from './component/employee-login/employee-logi
 import { ShowListComponent } from './component/show-list/show-list.component';
 import { ProductDetailComponent } from './component/product-detail/product-detail.component';
 import { OrderHistoryComponent } from './component/order-history/order-history.component';
-import { OrderStatusComponent } from './component/order-status/order-status.component'
+import { OrderStatusComponent } from './component/order-status/order-status.component';
+import { CartComponent } from './component/cart/cart.component'
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { OrderStatusComponent } from './component/order-status/order-status.comp
     ShowListComponent,
     ProductDetailComponent,
     OrderHistoryComponent,
-    OrderStatusComponent
+    OrderStatusComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
