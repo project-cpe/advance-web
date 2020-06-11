@@ -19,7 +19,7 @@
                 </ul>
                 <ul class="navbar-nav ml-auto">
                     &nbsp;
-                    <a href="#" class="btn btn-dark" data-toggle="modal" data-target="#myModal">
+                    <a href="/cart" class="btn btn-success">
                         <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart
                         <span class="badge badge-info"></span>
                     </a>
@@ -33,20 +33,24 @@
             </form>
         </div>
     </nav>
-<br>
-<div class="container">
-    <div class="row">
-        <div class="col-sm-3" *ngFor="let item of (getAllData()| filter:term) index as i">
-            <div class="card mb-3" style="box-shadow: 0 0 10px #666;">
-                <img class="card-img-top" [src]="item.img" alt="Card image cap" >
-                <div class="card-body">
-                    <p class="card-text">{{item.nameCargo}}</p>
-                    <p class="card-text"> <a class="btn btn-warning btn-sm" href="/productdetail/{{item._id}}" role="button">ดูข้อมูล</a> ราคา : <span>{{item.price | number}}</span> บาท
-                    </p>
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h1 class="jumbotron-heading">Welcome to Phone-Shop</h1>
+         </div>
+    </section>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3" *ngFor="let item of (getAllData()| filter:term) index as i">
+                <div class="card mb-3" style="box-shadow: 0 0 10px #666;">
+                    <img class="card-img-top" [src]="item.img" alt="Card image cap" >
+                    <div class="card-body">
+                        <p class="card-text">{{item.nameCargo}}</p>
+                        <p class="card-text"> <a class="btn btn-warning btn-sm" href="/productdetail/{{item._id}}" role="button">ดูข้อมูล</a> ราคา : <span>{{item.price | number}}</span> บาท
+                        </p>
 
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 <html>

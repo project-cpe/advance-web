@@ -9,7 +9,7 @@ import { ShowListComponent } from './component/show-list/show-list.component';
 import { ProductDetailComponent } from './component/product-detail/product-detail.component';
 import { OrderHistoryComponent } from './component/order-history/order-history.component';
 import { OrderStatusComponent } from './component/order-status/order-status.component';
-
+import { CartComponent } from './component/cart/cart.component'
 
 
 const routes: Routes = [
@@ -22,7 +22,8 @@ const routes: Routes = [
   { path: 'showlist', component: ShowListComponent},
   { path: 'productdetail/:id', component: ProductDetailComponent},
   { path: 'orderhistory', component: OrderHistoryComponent},
-  { path: 'orderstatus', component: OrderStatusComponent}
+  { path: 'orderstatus', component: OrderStatusComponent},
+  { path: 'cart', component: CartComponent}
 
 ];
 
