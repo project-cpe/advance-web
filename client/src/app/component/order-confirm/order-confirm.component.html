@@ -1,0 +1,162 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand">Phone-Shop</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+  
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr auto">
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              id="navbarDropdownMenuLink"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              work
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="/showlist">show product list</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/orderlist">order list</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/orderconfirm">order confirm</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+          <a class="btn btn-info" role="button">
+            <i class="fa fa-user-secret" aria-hidden="true"></i>
+          </a>
+          <li class="nav-item">
+            <a class="nav-link" readonly>{{ getUsername() }}</a>
+          </li>
+        </ul>
+      </div>
+      <form class="ml-md-2 my-2 my-lg-0">
+        <a class="btn btn-danger" (click)="Logout()" role="button">Log Out</a>
+      </form>
+    </div>
+  </nav>
+  
+  <div class="container-fluid p-3 mb-2 bg-light">
+    <div class="card mx-auto" style="max-width: 50%; margin-top: 10px;">
+      <div class="card-body">
+        <div class="row">
+          <div class="col">
+            <span style="font-size: 20px;">ชื่อผู้สั่งซื้อสินค้า : </span>
+          </div>
+        </div>
+        <hr />
+        <div class="row">
+          <div class="col">
+            ยืนยันคำสั่งซื้อหมายเลข :
+          </div>
+          <div class="col-sm-2"></div>
+        </div>
+        <div class="row">
+          <div class="col">วันที่สั่งซื้อ : ../../.. เวลา ../.. น</div>
+        </div>
+        <hr />
+        <div class="row">
+          <div class="col-md-6">
+            img + detail
+          </div>
+          <div class="col-md-2">
+            จำนวนสินค้า
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mx-auto" style="max-width: 50%; margin-top: 10px;">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <div class="row">
+              <div class="col">
+                ที่อยู่ในการจัดส่ง
+              </div>
+            </div>
+            <hr />
+            <div class="row">
+              <div class="col">
+                <i class="fa fa-home fa-2x" style="color:tomato;" aria-hidden="true"></i>
+                95/1 ม.1 ต.ห้วยเหนือ อ.ขุขันธ์ จ.ศรีสะเกษ
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                33140
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <div class="row">
+              <div class="col">
+                สรุปยอดรวมทั้งสิ้น
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                ยอดรวม
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                ค่าจัดส่ง
+              </div>
+            </div>
+            <hr />
+            <div class="row">
+              <div class="col">
+                ยอมรวมทั้งสิ้น
+              </div>
+              <div class="col text-right">
+                <span
+                  class="text-danger"
+                  style="font-weight: bold; font-size: 20px;"
+                  >฿ XX.XX bath</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row" style="margin-top: 10px;">
+      <div class="col mx-auto" style="max-width: 50%;">
+        <div class="card card-body">
+          <div class="row">
+            <div class="col"></div>
+            <div class="col-sm-2 text-right">
+              <button type="button" class="btn btn-secondary">
+                ยกเลิก
+              </button>
+            </div>
+            <div class="col-sm-1.5 text-right">
+              <button type="button" class="btn btn-primary">
+                ยืนยันคำสั่งซื้อ
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
