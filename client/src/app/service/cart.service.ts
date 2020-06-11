@@ -18,7 +18,6 @@ export class CartService {
   }
 
   findCartUser(usernameco) {
-    //console.log(username+", "+password);
     return this.http.get(`${baseUrl}/${usernameco}`);
   }
 }
