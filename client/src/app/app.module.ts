@@ -18,7 +18,8 @@ import { OrderHistoryComponent } from './component/order-history/order-history.c
 import { OrderStatusComponent } from './component/order-status/order-status.component';
 import { CartComponent } from './component/cart/cart.component';
 import { OrderListComponent } from './component/order-list/order-list.component';
-import { OrderConfirmComponent } from './component/order-confirm/order-confirm.component'
+import { OrderConfirmComponent } from './component/order-confirm/order-confirm.component';
+import { EmNavbarComponent } from './component/em-navbar/em-navbar.component'
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { OrderConfirmComponent } from './component/order-confirm/order-confirm.c
     OrderStatusComponent,
     CartComponent,
     OrderListComponent,
-    OrderConfirmComponent
+    OrderConfirmComponent,
+    EmNavbarComponent
   ],
   imports: [
     BrowserModule,
