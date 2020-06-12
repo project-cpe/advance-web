@@ -1,101 +1,50 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container">
-      <a class="navbar-brand">Phone-Shop</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarNavDropdown"
-        aria-controls="navbarNavDropdown"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-  
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr auto">
-          <li class="nav-item dropdown">
-            <a
-              class="nav-link dropdown-toggle"
-              id="navbarDropdownMenuLink"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              work
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="/showlist">show product list</a>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/orderlist">order list</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/orderconfirm">order confirm</a>
-          </li>
-        </ul>
-        <ul class="navbar-nav ml-auto">
-          <a class="btn btn-info" role="button">
-            <i class="fa fa-user-secret" aria-hidden="true"></i>
-          </a>
-          <li class="nav-item">
-            <a class="nav-link" readonly>{{ getUsername() }}</a>
-          </li>
-        </ul>
-      </div>
-      <form class="ml-md-2 my-2 my-lg-0">
-        <a class="btn btn-danger" (click)="Logout()" role="button">Log Out</a>
-      </form>
-    </div>
-  </nav>
-  
-  <div class="container-fluid p-3 mb-2 bg-light">
-    <div class="row">
-      <div class="col-md-8 text-center">
-        <div class="btn-group mx-auto" role="group" aria-label="Basic example">
-          <button type="button" class="btn btn-light">ทั้งหมด</button>
-          <button type="button" class="btn btn-light">อยู่ระหว่างจัดส่ง</button>
-          <button type="button" class="btn btn-light">จัดส่งแล้ว</button>
-        </div>
+<app-em-navbar></app-em-navbar>
+<div class="container-fluid p-3 mb-2 bg-light">
+  <div class="row">
+    <div class="col-md-8 text-center">
+      <div class="btn-group mx-auto" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-light">ทั้งหมด</button>
+        <button type="button" class="btn btn-light">อยู่ระหว่างจัดส่ง</button>
+        <button type="button" class="btn btn-light">จัดส่งแล้ว</button>
       </div>
     </div>
-    <div class="card mx-auto" style="max-width: 50%; margin-top: 10px;">
-      <div class="card-body">
-        <div class="row">
-          <div class="col">
-            ชื่อผู้สั่งซื้อสินค้า :
-          </div>
+  </div>
+  <div class="card mx-auto" style="max-width: 50%; margin-top: 10px;">
+    <div class="card-body">
+      <div class="row">
+        <div class="col">
+          ชื่อผู้สั่งซื้อสินค้า :
         </div>
-        <hr />
-        <div class="row">
-          <div class="col">
-            คำสั่งซื้อหมายเลข
-          </div>
+      </div>
+      <hr />
+      <div class="row">
+        <div class="col">
+          คำสั่งซื้อหมายเลข
         </div>
-        <div class="row">
-          <div class="col">วันที่สั่งซื้อ</div>
+      </div>
+      <div class="row">
+        <div class="col">วันที่สั่งซื้อ</div>
+      </div>
+      <hr />
+      <div class="row">
+        <div class="col-md-6">
+          img + detail
         </div>
-        <hr />
-        <div class="row">
-          <div class="col-md-6">
-            img + detail
-          </div>
-          <div class="col-md-2">
-            จำนวนสินค้า
-          </div>
-          <div class="col-md-4">
-            สถานะคำสั่งซื้อ
-          </div>
+        <div class="col-md-2">
+          จำนวนสินค้า
         </div>
-        <hr />
-        <div class="row text-right">
-          <div class="col">
-              <button type="button" class="btn btn-info btn-sm">ไปยังหน้ายืนยันสินค้า</button>
-          </div>
+        <div class="col-md-4">
+          สถานะคำสั่งซื้อ
+        </div>
+      </div>
+      <hr />
+      <div class="row text-right">
+        <div class="col">
+          <button type="button" class="btn btn-info btn-sm">
+            ไปยังหน้ายืนยันสินค้า
+          </button>
         </div>
       </div>
     </div>
   </div>
-  
+</div>
