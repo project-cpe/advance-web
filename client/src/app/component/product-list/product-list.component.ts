@@ -13,7 +13,7 @@ export class ProductListComponent implements OnInit {
   sts:number = 1;
   alldata: any;
   term: string;
-  token: string;
+  token: string = "";
 
   constructor(private router: Router,private addListService: AddListService, public local: LocalStorageService) { }
 
@@ -47,6 +47,5 @@ export class ProductListComponent implements OnInit {
     //let user = localStorage.getItem("Emusername");
     let user = this.local.get('customer').result.username;
     return user;
-  }
-  
+  }  
 }

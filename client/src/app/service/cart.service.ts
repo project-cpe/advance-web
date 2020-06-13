@@ -13,12 +13,17 @@ export class CartService {
 
   constructor(private http: HttpClient) { }
 
+  //add item to cart
   create(data) {
     return this.http.post(baseUrl, data);
   }
 
   findCartUser(usernameco) {
     return this.http.get(`${baseUrl}/${usernameco}`);
+  }
+
+  delete(id) {
+    return this.http.delete(`${baseUrl}/${id}`);
   }
 }
 

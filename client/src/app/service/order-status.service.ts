@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-const baseUrl = 'http://localhost:3000/api/addlist';
+const baseUrl = 'http://localhost:3000/api/orderStatus';
 
 @Injectable({
   providedIn: 'root'
@@ -22,5 +22,9 @@ export class OrderStatusService {
 
   getAllStatusType(){
     return this.status_type;
+  }
+  //save items from cart
+  create(data) {
+    return this.http.post(baseUrl, data);
   }
 }
