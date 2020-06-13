@@ -63,6 +63,12 @@
                         <label for="recipient-name" class="col-form-label">ชื่อสินค้า: <u><i><b>{{product.nameCargo}}</b></i></u></label>
                         <input type="text" class="form-control" formControlName='nameCargo' required>
                     </div>
+                    <div *ngIf="nameCargo.invalid && (nameCargo.dirty || nameCargo.touched)" class="alert alert-danger">
+                        <div *ngIf="nameCargo.errors.required">
+                            nameCargo is required
+                        </div>
+                    </div>
+
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label for="message-text" class="col-form-label">จำนวนสินค้า: <u><i><b>{{product.quantity}}</b></i></u> เครื่อง</label>
@@ -73,6 +79,17 @@
                             <input type="text" class="form-control" formControlName='price' required>
                         </div>
                     </div>
+                    <div *ngIf="quantity.invalid && (quantity.dirty || quantity.touched)" class="alert alert-danger">
+                        <div *ngIf="quantity.errors.required">
+                            quantity is required
+                        </div>
+                    </div>
+                    <div *ngIf="price.invalid && (price.dirty || price.touched)" class="alert alert-danger">
+                        <div *ngIf="price.errors.required">
+                            price is required
+                        </div>
+                    </div>
+
                     <div formGroupName="detail">
                         <div class="row">
                             <div class="form-group col-md-6">
@@ -86,6 +103,17 @@
                                 <input type="text" class="form-control" formControlName='display' required>
                             </div>
                         </div>
+                        <div *ngIf="typeOS.invalid && (typeOS.dirty || typeOS.touched)" class="alert alert-danger">
+                            <div *ngIf="typeOS.errors.required">
+                                type app-cart is required
+                            </div>
+                        </div>
+                        <div *ngIf="display.invalid && (display.dirty || display.touched)" class="alert alert-danger">
+                            <div *ngIf="display.errors.required">
+                                display is required
+                            </div>
+                        </div>
+
                         <div class="row">
                             <div class="form-group col-md-4">
                                 <label for="message-text" class="col-form-label">ROM: <u><i><b>{{product.rom}}</b></i></u> GB</label>
@@ -100,7 +128,23 @@
                                 <input type="text" class="form-control" formControlName='batt' required>
                             </div>
                         </div>
+                        <div *ngIf="rom.invalid && (rom.dirty || rom.touched)" class="alert alert-danger">
+                            <div *ngIf="rom.errors.required">
+                                rom is required
+                            </div>
+                        </div>
+                        <div *ngIf="externalDrive.invalid && (externalDrive.dirty || externalDrive.touched)" class="alert alert-danger">
+                            <div *ngIf="externalDrive.errors.required">
+                                ExternalDrive is required
+                            </div>
+                        </div>
+                        <div *ngIf="batt.invalid && (batt.dirty || batt.touched)" class="alert alert-danger">
+                            <div *ngIf="batt.errors.required">
+                                batt is required
+                            </div>
+                        </div>
                     </div>
+
                     <div class="row">
                         <div class="col-md-2">
                             รูปสินค้า
@@ -111,11 +155,14 @@
                             </div>
                         </div>
                     </div>
+                    <div *ngIf="file.invalid && (file.dirty || file.touched)" class="alert alert-danger">
+                        <div *ngIf="file.errors.required">
+                            file is required
+                        </div>
+                    </div>
 
                     <div class="row">
-                        <div class="col-md-3">
-
-                        </div>
+                        <div class="col-md-3"></div>
                         <div class="col-md-9">
                             <img *ngIf="previewLoaded" class="img-thumbnail" [src]="this.dataLists.value.img" style="height:150px;">
                         </div>
@@ -123,6 +170,11 @@
                             <div class="card mb-3" style="box-shadow: 0 0 10px #666;">
                                 <img class="card-img-top" [src]="product.img" alt="Card image cap">
                             </div>
+                        </div>
+                    </div>
+                    <div *ngIf="img.invalid && (img.dirty || img.touched)" class="alert alert-danger">
+                        <div *ngIf="img.errors.required">
+                            img is required
                         </div>
                     </div>
                 </form>

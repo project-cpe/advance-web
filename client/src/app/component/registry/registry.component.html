@@ -1,68 +1,103 @@
 <div class="card text-back bg-primary mb-3">
     <div class="card-body">
-        <h2 class="card-title">Register</h2>
+        <h2 class="card-title">สมัครสมาชิก</h2>
         <div class="card">
             <div class="card-body">
                 <form [formGroup]="registerForm" style="text-align: left;">
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="inputFirtN">First Name</label>
+                            <label for="inputFirtN">ชื่อ</label>
                             <input type="text" class="form-control" formControlName='firstName' placeholder="First Name">
                         </div>
-
                         <div class="form-group col-md-6">
-                            <label for="inputLastN">Last Name</label>
+                            <label for="inputLastN">นามสกุล</label>
                             <input type="text" class="form-control" formControlName='lastName' placeholder="Last Name">
                         </div>
                     </div>
 
+                    <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" class="alert alert-danger">
+                        <div *ngIf="firstName.errors.required">
+                            First Name is required
+                        </div>
+                    </div>
+                    <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)" class="alert alert-danger">
+                        <div *ngIf="lastName.errors.required">
+                            Last Name is required
+                        </div>
+                    </div>
+
                     <div class="row">
-                        <div class="col-md-1">Gender: </div>
+                        <div class="col-md-1">เพศ: </div>
                         <div class="form-check form-check-inline">
                             <label class="form-check-label">
-                            <input class="form-check-input" type="radio" name="sex" value="Male" formControlName='sex'> Male
+                            <input class="form-check-input" type="radio" name="sex" value="Male" formControlName='sex'> ชาย
                         </label>
                         </div>
 
                         <div class="form-check form-check-inline">
                             <label class="form-check-label">
-                            <input class="form-check-input" type="radio" name="sex" value="Female" formControlName='sex'> Female
+                            <input class="form-check-input" type="radio" name="sex" value="Female" formControlName='sex'> หญิง
                         </label>
+                        </div>
+                    </div>
+                    <div *ngIf="sex.invalid && (sex.dirty || sex.touched)" class="alert alert-danger">
+                        <div *ngIf="sex.errors.required">
+                            Sex is required
                         </div>
                     </div>
                     <br/>
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="username">Username</label>
+                            <label for="username">ชื่อผู้ใช้</label>
                             <input type="text" class="form-control" formControlName='username' placeholder="Dek_Kong">
+                        </div>
+                    </div>
+                    <div *ngIf="username.invalid && (username.dirty || username.touched)" class="alert alert-danger">
+                        <div *ngIf="username.errors.required">
+                            Username is required
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="email">Email</label>
+                            <label for="email">อีเมลล์</label>
                             <input type="email" class="form-control" formControlName='email' placeholder="name@example.com">
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="password">Password</label>
+                            <label for="password">รหัส</label>
                             <input type="password" class="form-control" formControlName='password' placeholder="Password">
-                            <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
-                                <div *ngIf="password.errors.required">
-                                    Password is required
-                                </div>
-                                <div *ngIf="password.errors.pattern">
-                                    Your Password is incorrect!
-                                </div>
-                            </div>
                         </div>
                     </div>
+                    <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+                        <div *ngIf="email.errors.email">
+                            Email is incorrect!
+                        </div>
+                        <div *ngIf="email.errors.required">
+                            Email is required
+                        </div>
+                    </div>
+                    <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+                        <div *ngIf="password.errors.required">
+                            Password is required
+                        </div>
+                        <div *ngIf="password.errors.pattern">
+                            Your Password is incorrect!
+                        </div>
+                    </div>
+
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="tel">Tel.</label>
+                            <label for="tel">เบอร์โทรศัพท์</label>
                             <input type="text" class="form-control" formControlName='tel' placeholder="0xx-xxxxxxx">
                         </div>
                     </div>
+                    <div *ngIf="tel.invalid && (tel.dirty || tel.touched)" class="alert alert-danger">
+                        <div *ngIf="tel.errors.required">
+                            Tel. is required
+                        </div>
+                    </div>
+
                     <div class="card">
                         <div class="card-body">
                             <div formGroupName="address">
@@ -77,6 +112,17 @@
                                         <input type="text" class="form-control" formControlName='parish'>
                                     </div>
                                 </div>
+                                <div *ngIf="Hnum.invalid && (Hnum.dirty || Hnum.touched)" class="alert alert-danger">
+                                    <div *ngIf="Hnum.errors.required">
+                                        Hnum is required
+                                    </div>
+                                </div>
+                                <div *ngIf="parish.invalid && (parish.dirty || parish.touched)" class="alert alert-danger">
+                                    <div *ngIf="parish.errors.required">
+                                        Parish is required
+                                    </div>
+                                </div>
+
                                 <div class="form-row">
                                     <div class="form-group col-md-4">
                                         <label for="district">เขต/อำเภอ</label>
@@ -91,6 +137,22 @@
                                         <input type="text" class="form-control" formControlName='zip'>
                                     </div>
                                 </div>
+
+                                <div *ngIf="district.invalid && (district.dirty || district.touched)" class="alert alert-danger">
+                                    <div *ngIf="district.errors.required">
+                                        district is required
+                                    </div>
+                                </div>
+                                <div *ngIf="province.invalid && (province.dirty || province.touched)" class="alert alert-danger">
+                                    <div *ngIf="province.errors.required">
+                                        Province is required
+                                    </div>
+                                </div>
+                                <div *ngIf="zip.invalid && (zip.dirty || zip.touched)" class="alert alert-danger">
+                                    <div *ngIf="zip.errors.required">
+                                        zip is required
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -98,13 +160,26 @@
                     <div class="form-group">
                         <div class="form-check">
                             <input class="form-check-input" name="check" type="checkbox" value="false" formControlName='check'>
-                            <label class="form-check-label" for="check">
-                      Check me out
-                    </label>
+                            <label class="form-check-label" for="check">ฉันยอมรับ</label>
+                        </div>
+                    </div>
+                    <div *ngIf="check.invalid && (check.dirty || check.touched)" class="alert alert-danger">
+                        <div *ngIf="check.errors.required">
+                            check is required
                         </div>
                     </div>
 
-                    <button (click)="saveRegister()" type="submit" class="btn btn-primary">Submit</button>
+                    <div class="form-row">
+                        <div class="col-md-1">
+                            <button (click)="saveRegister()" type="button" class="btn btn-primary">ยืนยัน</button>
+                        </div>
+                        <div class="col-md-1">
+                            <button type="button" (click)="reset()" class="btn btn-danger">ล้าง</button>
+                        </div>
+                        <div class="col-md-1">
+                            <button type="button" routerLink="/home" routerLinkActive="active" class="btn btn-dark">ย้อนกลับ</button>
+                        </div>
+                    </div>
                 </form>
                 <br/>
                 <!--div class="card">

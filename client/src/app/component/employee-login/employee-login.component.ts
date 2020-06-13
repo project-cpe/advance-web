@@ -17,9 +17,12 @@ export class EmployeeLoginComponent implements OnInit {
   dataEmploy: any;
 
   dataLoginEm = new FormGroup({
-    username: new FormControl(''),
-    password: new FormControl(''),
+    username: new FormControl('',[Validators.required]),
+    password: new FormControl('',[Validators.required])
   });
+
+  get username(){ return this.dataLoginEm.get('username'); }
+  get password(){ return this.dataLoginEm.get('password'); }
 
   constructor(private http: HttpClient,private router: Router, public local: LocalStorageService) { }
 

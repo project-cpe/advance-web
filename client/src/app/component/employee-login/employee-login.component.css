@@ -51,7 +51,7 @@
     background: url(/../../assets/image/Em-Login.jpeg);
     filter: blur(8px);
     -webkit-filter: blur(8px);
-    height: 695px;
+    height: 650px;
     font-family: 'Numans', sans-serif;
     width: 100%;
     background-position: center;
@@ -65,6 +65,12 @@
     margin-bottom: auto;
     width: 400px;
     background-color: rgba(0, 0, 0, 0.5) !important;
+}
+
+.social_icon span {
+    font-size: 60px;
+    margin-left: 10px;
+    color: #FFC312;
 }
 
 .social_icon span:hover {
@@ -84,7 +90,15 @@
 
 .input-group-prepend span {
     width: 50px;
-    background-color: rgb(189, 52, 86);
+    background-color: #ff12df;
+    color: black;
+    border: 0 !important;
+}
+
+.input-group-prepend2 span {
+    width: 40px;
+    height: 40px;
+    background-color: rgb(218, 198, 24);
     color: black;
     border: 0 !important;
 }
@@ -94,15 +108,40 @@ input:focus {
     box-shadow: 0 0 0 0 !important;
 }
 
+.remember {
+    color: white;
+}
+
+.remember input {
+    width: 20px;
+    height: 20px;
+    margin-left: 15px;
+    margin-right: 5px;
+}
+
 .login_btn {
     color: black;
-    background-color: rgb(233, 87, 76);
+    background-color: #ff12ff;
     width: 100px;
+}
+
+.login_btn2 {
+    color: black;
+    background-color: rgb(244, 243, 252);
+    width: 220px;
 }
 
 .login_btn:hover {
     color: black;
     background-color: white;
+}
+
+.links {
+    color: white;
+}
+
+.links a {
+    margin-left: 4px;
 }
 
 .container {

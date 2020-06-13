@@ -20,20 +20,31 @@ export class ShowListComponent implements OnInit {
   previewLoaded: boolean = false;
 
   dataLists = new FormGroup({
-    nameCargo: new FormControl(''),
-    quantity: new FormControl(''),
-    price: new FormControl(''),
-    img: new FormControl(''),
-    file: new FormControl(''),
+    nameCargo: new FormControl('',[Validators.required]),
+    quantity: new FormControl('',[Validators.required]),
+    price: new FormControl('',[Validators.required]),
+    img: new FormControl('',[Validators.required]),
+    file: new FormControl('',[Validators.required]),
     detail: new FormGroup({ 
-      typeOS: new FormControl(''),
-      display: new FormControl(''),
-      rom: new FormControl(''),
-      externalDrive: new FormControl(''),
-      batt: new FormControl('')
+      typeOS: new FormControl('',[Validators.required]),
+      display: new FormControl('',[Validators.required]),
+      rom: new FormControl('',[Validators.required]),
+      externalDrive: new FormControl('',[Validators.required]),
+      batt: new FormControl('',[Validators.required])
     })
   });
-  ;
+
+  get nameCargo(){ return this.dataLists.get('nameCargo'); }
+  get quantity(){ return this.dataLists.get('quantity'); }
+  get price(){ return this.dataLists.get('price'); }
+  get img(){ return this.dataLists.get('img'); }
+  get file(){ return this.dataLists.get('file'); }
+  get typeOS(){ return this.dataLists.get('detail').get('typeOS'); }
+  get display(){ return this.dataLists.get('detail').get('display'); }
+  get rom(){ return this.dataLists.get('detail').get('rom'); }
+  get externalDrive(){ return this.dataLists.get('detail').get('externalDrive'); }
+  get batt(){ return this.dataLists.get('detail').get('batt'); }
+
 
   constructor(private addListService: AddListService,private router: Router, public local: LocalStorageService) {}
 
