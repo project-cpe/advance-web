@@ -16,9 +16,12 @@ export class LoginComponent implements OnInit {
   dataUser: any;
 
   dataLogin = new FormGroup({
-    username: new FormControl(''),
-    password: new FormControl(''),
+    username: new FormControl('',[Validators.required]),
+    password: new FormControl('',[Validators.required]),
   });
+
+  get username(){ return this.dataLogin.get('username'); }
+  get password(){ return this.dataLogin.get('password'); }
 
   constructor(private registerService: RegisterService, private router: Router, public local: LocalStorageService) { }
 

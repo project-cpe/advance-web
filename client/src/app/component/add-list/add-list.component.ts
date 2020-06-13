@@ -10,32 +10,52 @@ import { LocalStorageService } from 'angular-web-storage';
   styleUrls: ['./add-list.component.css']
 })
 export class AddListComponent implements OnInit {
+  
+  previewLoaded: boolean = false;
 
   dataList = new FormGroup({
-    nameCargo: new FormControl(''),
-    type: new FormControl(''),
-    codeCargo: new FormControl(''),
-    quantity: new FormControl(''),
-    price: new FormControl(''),
-    img: new FormControl(''),
-    file: new FormControl(''),
+    nameCargo: new FormControl('',[Validators.required]),
+    type: new FormControl('',[Validators.required]),
+    codeCargo: new FormControl('',[Validators.required]),
+    quantity: new FormControl('',[Validators.required]),
+    price: new FormControl('',[Validators.required]),
+    img: new FormControl('',[Validators.required]),
+    file: new FormControl('',[Validators.required]),
     detail: new FormGroup({ 
-      produceDate:new FormControl(''),
-      typeOS: new FormControl(''),
-      size: new FormControl(''),
-      display: new FormControl(''),
-      cpu: new FormControl(''),
-      ram: new FormControl(''),
-      rom: new FormControl(''),
-      externalDrive: new FormControl(''),
-      camFace: new FormControl(''),
-      camBack: new FormControl(''),
-      batt: new FormControl(''),
-      twoSim: new FormControl('')
+      produceDate:new FormControl('',[Validators.required]),
+      typeOS: new FormControl('',[Validators.required]),
+      size: new FormControl('',[Validators.required]),
+      display: new FormControl('',[Validators.required]),
+      cpu: new FormControl('',[Validators.required]),
+      ram: new FormControl('',[Validators.required]),
+      rom: new FormControl('',[Validators.required]),
+      externalDrive: new FormControl('',[Validators.required]),
+      camFace: new FormControl('',[Validators.required]),
+      camBack: new FormControl('',[Validators.required]),
+      batt: new FormControl('',[Validators.required]),
+      twoSim: new FormControl('',[Validators.required])
     })
   });
-  previewLoaded: boolean = false;
   
+  get nameCargo(){ return this.dataList.get('nameCargo'); }
+  get type(){ return this.dataList.get('type'); }
+  get codeCargo(){ return this.dataList.get('codeCargo'); }
+  get quantity(){ return this.dataList.get('quantity'); }
+  get price(){ return this.dataList.get('price'); }
+  get img(){ return this.dataList.get('img'); }
+  get file(){ return this.dataList.get('file'); }
+  get produceDate(){ return this.dataList.get('detail').get('produceDate'); }
+  get typeOS(){ return this.dataList.get('detail').get('typeOS'); }
+  get size(){ return this.dataList.get('detail').get('size'); }
+  get display(){ return this.dataList.get('detail').get('display'); }
+  get cpu(){ return this.dataList.get('detail').get('cpu'); }
+  get ram(){ return this.dataList.get('detail').get('ram'); }
+  get rom(){ return this.dataList.get('detail').get('rom'); }
+  get externalDrive(){ return this.dataList.get('detail').get('externalDrive'); }
+  get camFace(){ return this.dataList.get('detail').get('camFace'); }
+  get camBack(){ return this.dataList.get('detail').get('camBack'); }
+  get batt(){ return this.dataList.get('detail').get('batt'); }
+  get twoSim(){ return this.dataList.get('detail').get('twoSim'); }
 
   constructor(private addListService: AddListService,private router: Router, public local: LocalStorageService) { }
 
