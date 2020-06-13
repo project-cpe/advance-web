@@ -1,28 +1,32 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
         <a class="navbar-brand" href="/productlist">Phone-Shop</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse justify-content-end" id="navbarsExampleDefault">
-            
-
-            <form class="form-inline my-2 my-lg-0">
-                <div class="input-group input-group-sm">
-                    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Search...">
-                    <div class="input-group-append">
-                        <button type="button" class="btn btn-secondary btn-number">
-                            <i class="fa fa-search"></i>
-                        </button>
-                    </div>
-                </div>
-                <a class="btn btn-success btn-sm ml-3" href="cart.html">
-                    <i class="fa fa-shopping-cart"></i> Cart
-                    <span class="badge badge-light">3</span>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/orderstatus">สถานะคำสั่งซื้อ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/orderhistory">ประวัติการสั่งซื้อ</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                &nbsp;
+                <a href="/cart" class="btn btn-success">
+                    <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart
+                    <span class="badge badge-info"></span>
                 </a>
-            </form>
+                <li class="nav-item">
+                    <a class="nav-link" readonly>สวัสดี! คุณ {{getUsername()}}</a>
+                </li>
+            </ul>
         </div>
+        <form class="ml-md-2 my-2 my-lg-0">
+            <button type="button" (click)="Logout()" class="btn btn-danger">ออกจากระบบ</button>
+        </form>
     </div>
 </nav>
 <section class="jumbotron text-center">
@@ -51,9 +55,9 @@
                             <td><img [src]="item.img" height="60px"/> </td>
                             <td>{{item.nameCargo}}</td>
                             <td>In stock</td>
-                            <td>{{item.quantity}}</td>
+                            <td class="text-center">{{item.quantity}}</td>
                             <td class="text-right">{{item.price|number}} บาท</td>
-                            <td class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>
+                            <td class="text-right"><button class="btn btn-sm btn-danger" (click)="deleteProductInCart(item._id)"><i class="fa fa-trash"></i> </button> </td>
                         </tr>
                         <tr>
                             <td></td>
@@ -69,11 +73,11 @@
         </div>
         <div class="col mb-2">
             <div class="row">
-                <div class="col-sm-12  col-md-6">
-                    <button class="btn btn-block btn-light">กลับสู่หน้าหลัก</button>
+                <div class="col-sm-12  col-md-6" >
+                    <button class="btn btn-lg btn-block btn-dark " (click)="backToMain()">กลับสู่หน้าหลัก</button>
                 </div>
                 <div class="col-sm-12 col-md-6 text-right">
-                    <button class="btn btn-lg btn-block btn-success text-uppercase">ยืนยันคำสั่งซื้อ</button>
+                    <button class="btn btn-lg btn-block btn-success text-uppercase" (click)="saveToOderStatus()">ยืนยันคำสั่งซื้อ</button>
                 </div>
             </div>
         </div>

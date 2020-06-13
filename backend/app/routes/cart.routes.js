@@ -9,6 +9,8 @@ module.exports = app => {
 
     router.get("/:user", cart.findCartUser)
 
+    router.delete("/:id", cart.delete);
+
     app.use('/api/cart', router);
 
 }
