@@ -19,7 +19,8 @@ import { OrderStatusComponent } from './component/order-status/order-status.comp
 import { CartComponent } from './component/cart/cart.component';
 import { OrderListComponent } from './component/order-list/order-list.component';
 import { OrderConfirmComponent } from './component/order-confirm/order-confirm.component';
-import { EmNavbarComponent } from './component/em-navbar/em-navbar.component'
+import { EmNavbarComponent } from './component/em-navbar/em-navbar.component';
+import { CusNavbarComponent } from './component/cus-navbar/cus-navbar.component'
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { EmNavbarComponent } from './component/em-navbar/em-navbar.component'
     CartComponent,
     OrderListComponent,
     OrderConfirmComponent,
-    EmNavbarComponent
+    EmNavbarComponent,
+    CusNavbarComponent
   ],
   imports: [
     BrowserModule,
