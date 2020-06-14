@@ -1,93 +1,70 @@
 <html >
     <!-- header navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <!-- <div class="container"> -->
-            <a class="navbar-brand" href="/productlist">Phone-Shop</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <!-- <ul class="navbar-nav mr auto">
-                    <input type="text" class="form-control" placeholder="ค้นหาสินค้า" [(ngModel)]="term">
-                </ul> -->
-                <ul class="navbar-nav mr auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/orderstatus">สถานะคำสั่งซื้อ</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/orderhistory">ประวัติการสั่งซื้อ</a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav ml-auto">
-                    &nbsp;
-                    <a href="#" class="btn btn-dark" data-toggle="modal" data-target="#myModal">
-                        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart
-                        <span class="badge badge-info"></span>
-                    </a>
-                    <li class="nav-item">
-                        <a class="nav-link" readonly>สวัสดี! คุณ {{getUsername()}}</a>
-                    </li>
-                </ul>
-            </div>
-            <form class="ml-md-2 my-2 my-lg-0">
-                <button type="button" (click)="Logout()" class="btn btn-danger">ออกจากระบบ</button>
-            </form>
-        <!-- </div> -->
-    </nav>
-
+    <app-cus-navbar></app-cus-navbar>
 
 <!-- body -->
-
     <!-- Search -->
     <div class="card-header">
-        <div class="col-md-4">
-            <label for="type">Order Status :</label>
-            <select class="browser-default custom-select" >
-                <option selected>--กรุณาเลือก--</option>
-                <option *ngFor="let type of getAllStatus()">{{type.t_name}} </option>
-              </select>
+        <div class="container">
+            <div class="col-md-5">
+                <div class="btn-group mx-3" role="group" aria-label="Basic example">
+                    <button type="button" class="btn btn-light" (click)="bt=0">ทั้งหมด</button>
+                    <button type="button" class="btn btn-light" (click)="bt=1">รอการยืนยัน</button>
+                    <button type="button" class="btn btn-light" (click)="bt=2">กำลังจัดส่ง</button>
+                    <button type="button" class="btn btn-light" (click)="bt=3">ที่ต้องได้รับ</button>
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- show order -->
-    <div class="mx-auto mt-3 shadow" style="width:95%">
-        <div class="card-header" style="background-color: rgba(158, 158, 158, 0.1);">
-            <div class="row">
-                <div class="col">
-                    <div class="row pl-3">
-                        คำสั่งซื้อ
-                        <div class="text-info">#00000000</div>
+    <div class="container">
+        <!-- show order -->
+        <div *ngFor="let item of getAllData() index as i">
+                <div *ngIf="checkButtonAndStatus(item.status)">
+
+            <div class="mx-auto mt-3 shadow" style="width:95%">
+                <div class="card-header" style="background-color: rgba(158, 158, 158, 0.1);">
+                    <div class="row">
+                        <div class="col">
+                            <div class="row pl-3">
+                                คำสั่งซื้อ
+                                <div class="text-info">#{{item._id}}</div>
+                            </div>
+                            <div style="color:grey; font-size: 70%;">สั่งซื้อวันที่ {{item.date| date:'dd-MMMM-yyyy'}}</div>
+                        </div>
+                        <div class="col">
+                            <div class="text-right">
+                                <h5><div class="text" style="color: rgb(106, 50, 196); ">{{item.status}}</div></h5>
+                            </div>
+                        </div>
                     </div>
-                    <div style="color:grey; font-size: 70%;">สั่งซื้อวันที่ ../../.. เวลา ..:.. น.</div>
-                </div>
-                <div class="col">
-                    <div class="text-right">
-                        <h5><div class="text" style="color: rgb(106, 50, 196); ">status</div></h5>
-                    </div>
-                </div>
-            </div>
-            <hr />
-            <div class="row">
-                <div class="col-3">
-                    <img [src]="" class="mr-4" style="width: 100px">
-                </div>
-                <div class="col">
-                    <div >product name......</div>
-                    <div>฿xxx.xx (price per piece)</div>
-                    <div class="text-black-50">x 1 (quantity of order)</div>
                     <hr />
+                    <div class="row">
+                        <div class="col-3">
+                            <img [src]="item.img" class="mr-4" style="width: 100px">
+                        </div>
+                        <div class="col">
+                            <div >{{item.name}}</div>
+                            <div>฿{{item.price | number}} (price per piece)</div>
+                            <div class="text-black-50">x{{item.quantity}} </div>
+                            <hr />
+                            <div class="text-right">
+                                การสั่งซื้อรวม : 
+                                <h4><div class="text-danger">฿{{item.price* item.quantity | number}}</div></h4>
+                            </div>
+                        </div>
+                    </div>
                     <div class="text-right">
-                        การสั่งซื้อรวม : 
-                        <h4><div class="text-danger">฿ xxx.xx</div></h4>
+                        <button type="button" class="btn btn-danger" (click)="updateProduct(item._id)" *ngIf="item.status == 'รอการยืนยัน'"><i class="fa fa-trash" aria-hidden="true"></i> ยกเลิก</button>
                     </div>
                 </div>
             </div>
-            <div class="text-right">
-                <button type="button" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> ยกเลิก</button>
-            </div>
+            <br>
+
+
+        </div>
         </div>
     </div>
-    <br>
     
     
 

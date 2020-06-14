@@ -11,11 +11,20 @@ import { LocalStorageService } from 'angular-web-storage';
 })
 export class OrderStatusComponent implements OnInit {
 
+  sts:number = 1;
   term: string;
+  image: File;
+  token: string;
+  alldata: any
+  previewLoaded: boolean = false;
+  status: any;
+  bt:number = 0;
 
   constructor(private router: Router, private orderStatusService: OrderStatusService, public local: LocalStorageService) { }
 
   ngOnInit(): void {
+    console.log(this.getAllData());
+    status = this.orderStatusService.getAllStatusType();
   }
 
   Logout(){
@@ -32,4 +41,71 @@ export class OrderStatusComponent implements OnInit {
     return user;
   }
 
+
+  getAllData(){
+    if(this.sts == 1){
+    this.orderStatusService.findOrderUser(this.getUsername())
+    .subscribe(
+      response => {
+        //console.log(response);
+        this.alldata = response;
+        console.log(this.alldata);
+      },
+      error => {
+        console.log(error);
+      });
+    }
+    this.sts = 0;
+    return this.alldata;
+  }
+
+  updateProduct(productId: any){
+    console.log(productId);
+    const data = {
+      status: "ยกเลิกการสั่งซื้อ"
+    };
+    this.orderStatusService.update(productId, data)
+      .subscribe(
+        response =>{
+          alert('คุณได้ยกเลิกการสั่งซื้อแล้ว')
+          console.log(response);
+          window.location.reload();
+        },
+        error => {
+          console.log(error);
+        }
+      );
+  }
+
+  checkButtonAndStatus(status){
+    if(this.bt == 0){
+      if(status == 'รอการยืนยัน' ||  status == 'กำลังจัดส่ง' || status == 'ที่ต้องได้รับ'){
+        return true;
+      }
+      else {
+        return false;
+      }
+    }else if(this.bt == 1){
+      if(status == 'รอการยืนยัน'){
+        return true;
+      }else{
+        return false;
+      }
+    }else if(this.bt == 2){
+      if(status == 'กำลังจัดส่ง'){
+        return true;
+      }else{
+        return false;
+      }
+    }else if(this.bt == 3){
+      if(status == 'ที่ต้องได้รับ'){
+        return true;
+      }else{
+        return false;
+      }
+    }else{
+      return false;
+    }
+    
+  }
 }

@@ -7,4 +7,8 @@ module.exports = app => {
 
     app.use('/api/orderStatus', router);
 
+    router.get("/:user", orderStatus.findOrderByUser);
+
+    router.put("/:id", orderStatus.update);
+
 }
