@@ -12,7 +12,8 @@ exports.create = (req, res) => {
         img: req.body.img,
         price: req.body.price,
         quantity: req.body.quantity,
-        file: req.body.file
+        file: req.body.file,
+        productId: req.body.productId
 
     });
 
