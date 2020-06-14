@@ -1,39 +1,24 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-        <a class="navbar-brand" href="/addlist">Phone-Shop</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+        <a class="navbar-brand" aria-readonly="">Phone-Shop</a>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr auto">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            work
-          </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="/addlist">Add new product</a>
-                        <a class="dropdown-item" href="/showlist">show product list</a>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/orderlist">order list</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/orderconfirm">order confirm</a>
-                </li>
-            </ul>
-            <ul class="navbar-nav ml-auto">
-                <a class="btn btn-info" role="button">
-                    <i class="fa fa-user-secret" aria-hidden="true"></i>
-                </a>
-                <li class="nav-item">
-                    <a class="nav-link" readonly>{{getUsername()}}</a>
-                </li>
-            </ul>
-        </div>
-        <form class="ml-md-2 my-2 my-lg-0">
-            <a class="btn btn-danger" (click)="Logout()" role="button">Log Out</a>
-        </form>
+        <ul class="navbar">
+            <button class="btn btn-outline-success" routerLink="/addlist" routerLinkActive="active" type="button">Add new product</button>
+            <button class="btn btn-outline-primary" routerLink="/showlist" routerLinkActive="active" type="button">show product list</button>
+            <button class="btn btn-outline-warning" routerLink="/orderlist" routerLinkActive="active" type="button">order list</button>
+            <button class="btn btn-outline-light" routerLink="/orderconfirm" routerLinkActive="active" type="button">order confirm</button>
+        </ul>
+
+        <ul class="navbar-nav ml-auto">
+            <a class="btn btn-info" role="button">
+                <i class="fa fa-user-secret" aria-hidden="true"></i>
+            </a>
+            <li class="nav-item">
+                <a class="nav-link" readonly>{{getUsername()}}</a>
+            </li>
+        </ul>
     </div>
+    <form class="ml-md-2 my-2 my-lg-0">
+        <a class="btn btn-danger" (click)="Logout()" role="button">Log Out</a>
+    </form>
 </nav>
