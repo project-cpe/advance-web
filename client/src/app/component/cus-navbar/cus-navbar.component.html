@@ -1,0 +1,31 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="/productlist">Phone-Shop</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/orderstatus">สถานะคำสั่งซื้อ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/orderhistory">ประวัติการสั่งซื้อ</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                &nbsp;
+                <a href="/cart" class="btn btn-success">
+                    <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart
+                    <span class="badge badge-info">{{getCount()}}</span>
+                </a>
+                <li class="nav-item">
+                    <a class="nav-link" readonly>สวัสดี! คุณ {{getUsername()}}</a>
+                </li>
+            </ul>
+        </div>
+        <form class="ml-md-2 my-2 my-lg-0">
+            <button type="button" (click)="Logout()" class="btn btn-danger">ออกจากระบบ</button>
+        </form>
+    </div>
+</nav>
