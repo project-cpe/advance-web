@@ -68,22 +68,6 @@ exports.create = (req, res) => {
         })
 };
 
-// Retrieve all Register from the database.
-exports.findAll = (req, res) => {
-    const title = req.query.title;
-    var condition = title ? { title: { $regex: new RegExp(title), $options: "i" } } : {};
-
-    Register.find(condition)
-        .then(data => {
-            res.send(data);
-        })
-        .catch(err => {
-            res.status(500).send({
-                message: err.message || "Some error occurred while retrieving Register."
-            });
-        });
-};
-
 const findUser = (username) => {
         return new Promise((resolve, reject) => {
             Register.findOne({ usernameco: username }, (err, data) => {
@@ -123,52 +107,4 @@ exports.findUsername = async(req, res) => {
     } catch (error) {
         res.status(404).send(error);
     }
-};
-
-// Update a Register by the id in the request
-exports.update = (req, res) => {
-    if (!req.body) {
-        return res.status(400).send({
-            message: "Data to update can not be empty!"
-        });
-    }
-
-    const id = req.params.id;
-
-    Register.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
-        .then(data => {
-            if (!data) {
-                res.status(404).send({
-                    message: `Cannot update Register with id=${id}. Maybe Register was not found!`
-                });
-            } else res.send({ message: "Register was updated successfully." });
-        })
-        .catch(err => {
-            res.status(500).send({
-                message: "Error updating Register with id=" + id
-            });
-        });
-};
-
-// Delete a Register with the specified id in the request
-exports.delete = (req, res) => {
-    const id = req.params.id;
-
-    Register.findByIdAndRemove(id)
-        .then(data => {
-            if (!data) {
-                res.status(404).send({
-                    message: `Cannot delete Register with id=${id}. Maybe Register was not found!`
-                });
-            } else {
-                res.send({
-                    message: "Register was deleted successfully!"
-                });
-            }
-        })
-        .catch(err => {
-            res.status(500).send({
-                message: "Could not delete Register with id=" + id
-            });
-        });
 };

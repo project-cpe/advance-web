@@ -125,21 +125,6 @@ exports.delete = (req, res) => {
         });
 };
 
-// Delete all Product from the database.
-exports.deleteAll = (req, res) => {
-    AddList.deleteMany({})
-        .then(data => {
-            res.send({
-                message: `${data.deletedCount} Product were deleted successfully!`
-            });
-        })
-        .catch(err => {
-            res.status(500).send({
-                message: err.message || "Some error occurred while removing all Product."
-            });
-        });
-};
-
 exports.findId = (req, res) => {
     AddList.findById(req.params.id)
         .exec(function(err, addList) {
