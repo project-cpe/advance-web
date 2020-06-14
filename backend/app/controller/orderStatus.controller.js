@@ -13,6 +13,7 @@ exports.create = (req, res) => {
         price: req.body.price,
         quantity: req.body.quantity,
         file: req.body.file,
+        productId: req.body.productId,
         status: req.body.status,
 
     });

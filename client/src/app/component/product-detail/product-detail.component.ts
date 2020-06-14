@@ -59,7 +59,8 @@ export class ProductDetailComponent implements OnInit {
       quantity: this.dataList.value.quantity,
       price: this.product.price,
       img: this.product.img,
-      file: this.product.file
+      file: this.product.file,
+      productId: this.product._id
     };
     console.log(data);
     this.cartService.create(data)

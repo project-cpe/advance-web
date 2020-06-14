@@ -76,7 +76,8 @@ export class CartComponent implements OnInit {
       price: Number,
       img: String,
       file: String,
-      status: "รอดำเนินการ"
+      status: "รอดำเนินการ",
+      productId: String,
     };
     this.length = this.getProductData().length;
     for(let item of this.getProductData()){
@@ -85,6 +86,7 @@ export class CartComponent implements OnInit {
       data.price = item.price;
       data.img = item.img;
       data.file = item.file;
+      data.productId = item.productId;
       this.orderStatus.create(data)
       .subscribe(
         response => {
