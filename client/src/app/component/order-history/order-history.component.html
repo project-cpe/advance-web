@@ -5,8 +5,8 @@
     <!-- body -->
     <div class="container">
         <div *ngFor="let item of getAllData() index as i">
-            <!-- <div *ngIf="checkStatus(item.status)"> -->
-            <div class="mx-auto mt-3 shadow" style="width:95%">
+            <div *ngIf="checkStatus(item.status)">
+            <div class="mx-auto mt-3 " style="width:95%; box-shadow: 1px 1px 10px 2px rgb(141, 141, 141);">
                 <div class="card-header" >
                     <div class="row">
                         <div class="col">
@@ -18,7 +18,8 @@
                         </div>
                         <div class="col">
                             <div class="text-right">
-                                <h5><div class="text-success">{{item.status}}</div></h5>
+                                <h5><div class="text-danger" *ngIf="item.status == 'ยกเลิกการสั่งซื้อ'">{{item.status}}</div>
+                                    <div class="text-success" *ngIf="item.status == 'เสร็จสิ้น'">{{item.status}}</div></h5>
                             </div>
                         </div>
                     </div>
@@ -34,14 +35,14 @@
                             <hr />
                             <div class="text-right">
                                 การสั่งซื้อรวม : 
-                                <h4><div class="text-danger">฿{{item.price* item.quantity | number}}</div></h4>
+                                <h4><div style="color: #000000; font-weight:bold;">฿{{item.price* item.quantity | number}}</div></h4>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <br>
-        <!-- </div> -->
+        </div>
         </div>
     </div>
     

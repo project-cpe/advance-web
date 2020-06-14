@@ -50,14 +50,14 @@ export class OrderHistoryComponent implements OnInit {
     return this.alldata;
   }
 
-  // checkStatus(status: any){
-  //   if(status == 'ยกเลิกการสั่งซื้อ' ||  status == 'เสร็จสิ้น' ){
-  //     return true;
-  //   }
-  //   else {
-  //     return false;
-  //   }
-  // }
+  checkStatus(status: any){
+    if(status == 'ยกเลิกการสั่งซื้อ' ||  status == 'เสร็จสิ้น' ){
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
 
   
 
