@@ -29,3 +29,40 @@ exports.create = (req, res) => {
             });
         });
 }
+
+exports.findOrderByUser = (req, res) => {
+    var user = req.params.user;
+    OrderStatus.find({usernameco : user})
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            res.status(500).send({
+                message: err.message || "No item in your order"
+            });
+        });
+};
+
+exports.update = (req, res) => {
+    if (!req.body) {
+        return res.status(400).send({
+            message: "Data to update can not be empty!"
+        });
+    }
+
+    const id = req.params.id;
+
+    OrderStatus.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
+        .then(data => {
+            if (!data) {
+                res.status(404).send({
+                    message: `Cannot update Product with id=${id}. Maybe Product was not found!`
+                });
+            } else res.send({ message: "Product was updated successfully." });
+        })
+        .catch(err => {
+            res.status(500).send({
+                message: "Error updating Product with id=" + id
+            });
+        });
+};

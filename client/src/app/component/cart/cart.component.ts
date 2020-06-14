@@ -76,7 +76,7 @@ export class CartComponent implements OnInit {
       price: Number,
       img: String,
       file: String,
-      status: "รอดำเนินการ",
+      status: "รอการยืนยัน",
       productId: String,
     };
     this.length = this.getProductData().length;
