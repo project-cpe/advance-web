@@ -84,13 +84,5 @@ export class RegistryComponent implements OnInit {
 reset(){
   this.registerForm.reset();
 }
-  // newTutorial() {
-  //   this.submitted = false;
-  //   this.tutorial = {
-  //     title: '',
-  //     description: '',
-  //     published: false
-  //   };
-  // }
 
 }

@@ -11,17 +11,9 @@ var corsOptions = {
 
 expressApp.use(cors(corsOptions));
 
-
 expressApp.use(bodyParser.json());
 
 expressApp.use(bodyParser.urlencoded({ extended: true }));
-
-// expressApp.use((req, res, next) => {
-//     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200')
-//     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS')
-//     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Options, Authorization')
-//     return next();
-// });
 
 const db = require("./app/models");
 db.mongoose
