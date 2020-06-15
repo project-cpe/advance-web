@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from 'src/app/service/cart.service';
-import { OrderStatusService } from 'src/app/service/order-status.service'
+import { OrderStatusService } from 'src/app/service/order-status.service';
+import { RegisterService } from 'src/app/service/register.service';
 import { Router,ActivatedRoute} from '@angular/router';
 import { LocalStorageService, AngularWebStorageModule } from 'angular-web-storage';
 
@@ -10,6 +11,7 @@ import { LocalStorageService, AngularWebStorageModule } from 'angular-web-storag
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
+  address: any;
   alldata: any;
   sts:number = 1;
   cartTotal:number;
@@ -17,16 +19,47 @@ export class CartComponent implements OnInit {
   length:number = 0;
 
   constructor(private router: Router, public local: LocalStorageService, private cartService: CartService,
-    private route: ActivatedRoute, private orderStatus: OrderStatusService ) { }
+    private route: ActivatedRoute, private orderStatus: OrderStatusService,private registerService :RegisterService) { }
 
   ngOnInit(): void {
+    this.getAddress1()
+    console.log(this.getAddress2())
   }
 
   getUsername(){
     let user = this.local.get('customer').result.username;
     return user;
   }
+  getUserId(){
+    let id = this.local.get('customer').result.id;
+    return id;
+  }
+  
 
+  getAddress2() :any{
+    let Hnum = this.local.get('customer').result.Hnum;
+    let province = this.local.get('customer').result.province;
+    let district = this.local.get('customer').result.district;
+    let parish = this.local.get('customer').result.parish;
+    let zip = this.local.get('customer').result.zip;
+    let email = this.local.get('customer').result.email;
+    let tel = this.local.get('customer').result.tel;
+    return Hnum+" ต."+parish+" อ."+district+" จ."+province+" รหัสไปรษณีย์ "+zip+ " เบอร์โทร: "+tel+ ", Email: "+email; 
+  }
+
+  getAddress1(){
+    const cusId = this.getUserId();
+    this.registerService.getAddressCustomer(cusId)
+    .subscribe(
+      response => {
+        console.log(response);
+        this.address = response;
+      },
+      error => {
+        console.log(error);
+      });
+    return this.address;
+  }
 
   
 
@@ -78,6 +111,7 @@ export class CartComponent implements OnInit {
       file: String,
       status: "รอการยืนยัน",
       productId: String,
+      address: String,
     };
     this.length = this.getProductData().length;
     for(let item of this.getProductData()){
@@ -87,6 +121,7 @@ export class CartComponent implements OnInit {
       data.img = item.img;
       data.file = item.file;
       data.productId = item.productId;
+      data.address = this.getAddress2();
       this.orderStatus.create(data)
       .subscribe(
         response => {

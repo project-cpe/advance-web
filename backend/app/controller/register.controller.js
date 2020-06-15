@@ -75,7 +75,9 @@ const findUser = (username) => {
                     reject(new Error('Cannot find username!'));
                 } else {
                     if (data) {
-                        resolve({ id: data._id, username: data.usernameco, password: data.password })
+                        resolve({ id: data._id, username: data.usernameco, password: data.password ,email:data.email,
+                        tel :data.tel,Hnum: data.Hnum,province: data.province,district: data.district,
+                        parish: data.parish,zip :data.zip})
                     } else {
                         reject(new Error('Cannot fond username!'));
                     }
@@ -108,3 +110,14 @@ exports.findUsername = async(req, res) => {
         res.status(404).send(error);
     }
 };
+
+exports.findIdCustomer = async(req, res) => {
+    Register.findById(req.params.id)
+        .exec(function(err, data) {
+            if (err) {
+                console.log(err)
+            } else {
+                res.json(data)
+            }
+        })
+}

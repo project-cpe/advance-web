@@ -23,4 +23,8 @@ export class RegisterService {
     return this.http.get(`${baseUrl}/${username}/${password}`);
   }
 
+  getAddressCustomer(id){
+    return this.http.get(`${baseUrl}/${id}`);
+  }
+
 }

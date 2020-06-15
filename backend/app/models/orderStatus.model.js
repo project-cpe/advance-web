@@ -8,7 +8,8 @@ module.exports = mongoose => {
         file: { type: String },
         productId: {type: String},
         date: { type: Date, default: Date.now },
-        status: {type :String}
+        status: {type :String},
+        address :{type :String}
     }, { timestamps: true });
 
     // schema.method("toJSON", function() {

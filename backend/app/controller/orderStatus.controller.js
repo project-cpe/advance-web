@@ -15,6 +15,7 @@ exports.create = (req, res) => {
         file: req.body.file,
         productId: req.body.productId,
         status: req.body.status,
+        address: req.body.address
 
     });
 

@@ -20,7 +20,7 @@ import { CartComponent } from './component/cart/cart.component';
 import { OrderListComponent } from './component/order-list/order-list.component';
 import { OrderConfirmComponent } from './component/order-confirm/order-confirm.component';
 import { EmNavbarComponent } from './component/em-navbar/em-navbar.component';
-import { CusNavbarComponent } from './component/cus-navbar/cus-navbar.component'
+import { CusNavbarComponent } from './component/cus-navbar/cus-navbar.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +38,7 @@ import { CusNavbarComponent } from './component/cus-navbar/cus-navbar.component'
     OrderListComponent,
     OrderConfirmComponent,
     EmNavbarComponent,
-    CusNavbarComponent
+    CusNavbarComponent,
   ],
   imports: [
     BrowserModule,
