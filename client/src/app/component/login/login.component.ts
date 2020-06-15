@@ -36,6 +36,10 @@ export class LoginComponent implements OnInit {
   getUrlFacebook(){
     return this.facebookUrl;
   }
+  getUsername(){
+    let user = this.local.get('customer').result.username;
+    return user;
+  }
 
   Login() {
     const data = {
@@ -57,14 +61,25 @@ export class LoginComponent implements OnInit {
                 Swal.fire({
                   icon: 'success',
                   title: 'Wow!...',
-                  text: 'You login Success!',
+                  html:`<a>เข้าสู่ระบบสำเร็จ ยินดีต้อนรับคุณ <u><i><b style="color:red">${this.getUsername()}</b></i></u><a>`
                 })
                 this.router.navigate(['/productlist']);
             }
           },
           error => {
             console.log(error);
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops! ...',
+              text: 'เข้าสู่ระบบไม่สำเร็จ กรุณาตรวจสอบให้ถูกต้อง'
+            })
           });
+  }else{
+    Swal.fire({
+      icon: 'warning',
+      title: 'Oops! ...',
+      text: 'กรุณากรอกข้อมูลให้ครบ'
+    })
   }
 }
 

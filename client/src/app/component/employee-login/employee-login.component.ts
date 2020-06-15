@@ -22,6 +22,11 @@ export class EmployeeLoginComponent implements OnInit {
     password: new FormControl('',[Validators.required])
   });
 
+  getUsername(){
+    let user = this.local.get('employee').result.username;
+    return user;
+  }
+
   get username(){ return this.dataLoginEm.get('username'); }
   get password(){ return this.dataLoginEm.get('password'); }
 
@@ -50,7 +55,7 @@ export class EmployeeLoginComponent implements OnInit {
             Swal.fire({
               icon: 'success',
               title: 'Wow!...',
-              text: 'You login Success!',
+              html:`<a>เข้าสู่ระบบสำเร็จ ยินดีต้อนรับคุณ <u><i><b style="color:red">${this.getUsername()}</b></i></u><a>`
             })
             this.router.navigate(['/addlist']);
           },
