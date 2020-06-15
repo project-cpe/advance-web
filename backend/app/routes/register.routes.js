@@ -9,7 +9,7 @@ module.exports = app => {
     // Retrieve a single Tutorial with id
     router.get("/:username/:password", register.findUsername);
 
-    // router.get("/:id", register.findCustomer);
+    router.get("/:id", register.findIdCustomer);
 
     app.use('/api/register', router);
 };
