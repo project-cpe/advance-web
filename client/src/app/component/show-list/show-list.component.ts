@@ -19,6 +19,18 @@ export class ShowListComponent implements OnInit {
   alldata: any
   previewLoaded: boolean = false;
 
+  codeC: String;
+  nameC: String;
+  quan: number;
+  prices: number;
+  imag: File;
+  files: String;
+  type: String;
+  dis: String;
+  roms: String;
+  exDrive: String;
+  bat: String;
+
   dataLists = new FormGroup({
     nameCargo: new FormControl('',[Validators.required]),
     quantity: new FormControl('',[Validators.required]),
@@ -26,7 +38,7 @@ export class ShowListComponent implements OnInit {
     img: new FormControl('',[Validators.required]),
     file: new FormControl('',[Validators.required]),
     detail: new FormGroup({ 
-      typeOS: new FormControl('',[Validators.required]),
+      typeOS: new FormControl(''),
       display: new FormControl('',[Validators.required]),
       rom: new FormControl('',[Validators.required]),
       externalDrive: new FormControl('',[Validators.required]),
@@ -39,7 +51,7 @@ export class ShowListComponent implements OnInit {
   get price(){ return this.dataLists.get('price'); }
   get img(){ return this.dataLists.get('img'); }
   get file(){ return this.dataLists.get('file'); }
-  get typeOS(){ return this.dataLists.get('detail').get('typeOS'); }
+  //get typeOS(){ return this.dataLists.get('detail').get('typeOS'); }
   get display(){ return this.dataLists.get('detail').get('display'); }
   get rom(){ return this.dataLists.get('detail').get('rom'); }
   get externalDrive(){ return this.dataLists.get('detail').get('externalDrive'); }
@@ -91,8 +103,6 @@ export class ShowListComponent implements OnInit {
   return this.alldata;
 }
 
-
-
 deleteProduct(nameProduct: any){
   console.log(nameProduct);
   this.addListService.delete(nameProduct)
@@ -115,15 +125,27 @@ getSomeData(productId: any){
     response => {
       console.log(response);
       this.product = response;
+      this.codeC = this.product.codeCargo;
+      this.nameC = this.product.nameCargo;
+      this.quan = this.product.quantity;
+      this.prices = this.product.price;
+      this.imag = this.product.img;
+      this.files = this.product.file;
+      this.type = this.product.typeOS;
+      this.dis = this.product.display;
+      this.roms = this.product.rom;
+      this.exDrive = this.product.externalDrive;
+      this.bat = this.product.batt;
     },
     error => {
       console.log(error);
     });
+    //return this.product;
   this.dataLists.reset();
 }
 
 updateProduct(productId: any){
-  console.log(productId);
+  //console.log(productId);
   const data = {
     nameCargo: this.dataLists.value.nameCargo,
     quantity: this.dataLists.value.quantity,
@@ -134,19 +156,63 @@ updateProduct(productId: any){
     display: this.dataLists.value.detail.display,
     rom: this.dataLists.value.detail.rom,
     externalDrive: this.dataLists.value.detail.externalDrive,
-    batt: this.dataLists.value.detail.batt,
+    batt: this.dataLists.value.detail.batt
   };
-  this.addListService.update(productId, data)
-    .subscribe(
-      response =>{
-        alert('update successful')
-        console.log(response);
-        window.location.reload();
-      },
-      error => {
-        console.log(error);
-      }
-    );
+  if(data.display == "-"){
+    data.display = this.product.display;
+    //console.log(data.display);
+  }
+  if(data.externalDrive == "-"){
+    data.externalDrive = this.product.externalDrive;
+    //console.log(data.externalDrive);
+  }
+  if(data.nameCargo == "-"){
+    data.nameCargo = this.product.nameCargo;
+    //console.log(data.nameCargo);
+  }
+  if(data.quantity == "0"){
+    data.quantity = this.product.quantity;
+    //console.log(data.quantity);
+  }
+  if(data.price == "-"){
+    data.price = this.product.price;
+    //console.log(data.price);
+  }
+  if(data.typeOS == null){
+    data.typeOS = this.product.typeOS;
+    //console.log(data.typeOS);
+  }
+  if(data.rom == "-"){
+    data.rom = this.product.rom;
+    //console.log(data.rom);
+  }
+  if(data.batt == "-"){
+    data.batt = this.product.batt;
+    //console.log(data.batt);
+  }
+  if(data.file == null && data.img == null){
+    data.file = this.product.file;
+    data.img = this.product.img;
+    //console.log(data.file);
+    //console.log(data.img);
+  }
+  if(data.nameCargo == null || data.quantity == null || data.price ==null || data.img == null || 
+    data.file == null || data.typeOS == null || data.display == null || data.rom == null 
+    || data.externalDrive == null || data.batt == null){
+      alert('ข้อมูลไม่ครบ')
+  }else{
+      this.addListService.update(productId, data)
+      .subscribe(
+        response =>{
+          alert('update successful')
+          console.log(response);
+          window.location.reload();
+        },
+        error => {
+          console.log(error);
+        }
+      );
+  }
 }
 
 onChangeImg(e: any){
