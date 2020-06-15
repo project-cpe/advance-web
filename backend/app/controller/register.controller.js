@@ -108,3 +108,14 @@ exports.findUsername = async(req, res) => {
         res.status(404).send(error);
     }
 };
+
+// exports.findCustomer = async(req, res) => {
+//     Register.findById(req.params.id)
+//         .exec(function(err, data) {
+//             if (err) {
+//                 console.log(err)
+//             } else {
+//                 res.json(data)
+//             }
+//         })
+// };
