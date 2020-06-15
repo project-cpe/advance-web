@@ -16,9 +16,10 @@
 4. npm install --save font-awesome
 5. npm install ng2-search-filter --save
 6. npm install angular-web-storage --save
+7. npm install sweetalert2
 
 #### backend
-1. npm i nodemon -g --save-dev
+1. npm install nodemon -g --save-dev
 2. npm install express mongoose body-parser cors --save
 3. npm install bcryptjs
 4. npm install jsonwebtoken

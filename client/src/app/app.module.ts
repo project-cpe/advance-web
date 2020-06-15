@@ -4,6 +4,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { ReactiveFormsModule ,FormsModule} from '@angular/forms';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -47,7 +48,8 @@ import { CusNavbarComponent } from './component/cus-navbar/cus-navbar.component'
     ReactiveFormsModule,
     FormsModule,
     Ng2SearchPipeModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    SweetAlert2Module
   ],
   providers: [],
   bootstrap: [AppComponent]
