@@ -1,7 +1,7 @@
-<div class="card text-back bg-primary mb-3">
+<div class="card text-light bg-dark mb-3">
     <div class="card-body">
         <h2 class="card-title">สมัครสมาชิก</h2>
-        <div class="card">
+        <div class="card" style="color:black">
             <div class="card-body">
                 <form [formGroup]="registerForm" style="text-align: left;">
                     <div class="form-row">
@@ -169,15 +169,11 @@
                         </div>
                     </div>
 
-                    <div class="form-row">
-                        <div class="col-md-1">
-                            <button (click)="saveRegister()" type="button" class="btn btn-primary">ยืนยัน</button>
-                        </div>
-                        <div class="col-md-1">
-                            <button type="button" (click)="reset()" class="btn btn-danger">ล้าง</button>
-                        </div>
-                        <div class="col-md-1">
-                            <button type="button" routerLink="/home" routerLinkActive="active" class="btn btn-dark">ย้อนกลับ</button>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button type="button" class="btn btn-primary" (click)="saveRegister()">บันทึกข้อมูล</button>&nbsp;
+                            <button type="button" class="btn btn-danger" (click)="reset()">ล้างข้อมูล</button>&nbsp;
+                            <button type="button" class="btn btn-dark" routerLink="/home" routerLinkActive="active">ย้อนกลับ</button>
                         </div>
                     </div>
                 </form>

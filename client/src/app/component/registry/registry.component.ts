@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormArray, Validators } from '@angular/forms';
 import { RegisterService } from 'src/app/service/register.service';
 import { Router} from '@angular/router';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-registry',
@@ -66,19 +67,44 @@ export class RegistryComponent implements OnInit {
       zip: this.registerForm.value.address.zip,
     };
     console.log(data);
-    this.registerService.create(data)
-      .subscribe(
-        response => {
-          console.log(response);
-          this.submitted = true;
-          alert("Save Success!")
-          this.router.navigate(['/home']);
-        },
-        error => {
-          console.log(error);
-        });
+    if(data.firstName == null || data.lastName == null || data.password == null || data.email == null
+      || data.username == null || data.sex == null || data.check == null || data.email == null
+      || data.tel == null || data.Hnum == null || data.district == null || data.province == null 
+      || data.parish == null || data.zip == null){
+        Swal.fire({
+          icon: 'warning',
+          title: 'Oops! ...',
+          text: 'กรุณากรอกข้อมูลให้ครบ'
+        })
+      }else{
+        this.registerService.create(data)
+        .subscribe(
+          response => {
+            console.log(response);
+            this.submitted = true;
+            //alert("Save Success!")
+            Swal.fire({
+              icon: 'success',
+              title: 'Wow!...',
+              text: 'สมัครสมาชิกสำเร็จ',
+            })
+            this.router.navigate(['/home']);
+          },
+          error => {
+            console.log(error);
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops! ...',
+              text: 'บันทึกไม่สำเร็จ'
+            })
+          });
+      }
       }else {
-        alert("No Confrim");
+        Swal.fire({
+          icon: 'warning',
+          title: 'Oops! ...',
+          text: 'กรุณาตรวจสอบข้อมูลให้ถูกต้อง'
+        })
       }
   } 
 reset(){
