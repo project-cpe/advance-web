@@ -11,4 +11,5 @@ module.exports = app => {
 
     router.put("/:id", orderStatus.update);
 
+    router.get("/", orderStatus.findOrderAll);
 }

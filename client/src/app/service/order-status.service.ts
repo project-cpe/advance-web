@@ -36,4 +36,8 @@ export class OrderStatusService {
   update(id, data) {
     return this.http.put(`${baseUrl}/${id}`, data);
   }
+
+  findOrderAll() {
+    return this.http.get(`${baseUrl}/`);
+  }
 }
