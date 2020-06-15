@@ -3,6 +3,7 @@ import { AddListService } from 'src/app/service/add-list.service';
 import { FormControl, FormGroup, FormArray, Validators } from '@angular/forms';
 import { Router} from '@angular/router';
 import { LocalStorageService } from 'angular-web-storage';
+import Swal from 'sweetalert2'
 
 
 @Component({
@@ -92,7 +93,7 @@ export class ShowListComponent implements OnInit {
         response => {
           console.log(response);
           this.alldata = response;
-          console.log(this.alldata[0]._id);
+          //console.log(this.alldata[0]._id);
           this.getSomeData(this.alldata[0]._id);
         },
         error => {
@@ -104,18 +105,36 @@ export class ShowListComponent implements OnInit {
 }
 
 deleteProduct(nameProduct: any){
-  console.log(nameProduct);
-  this.addListService.delete(nameProduct)
-    .subscribe(
-      response =>{
-        alert('delete successful')
-        console.log(response);
-        window.location.reload();
+  //console.log(nameProduct);
+  Swal.fire({
+    title: 'Are you sure?',
+    text: "You won't be able to revert this!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes, delete it!'
+  }).then((result) => {
+    if (result.value) {
+      this.addListService.delete(nameProduct)
+        .subscribe(
+          response =>{
+            //alert('delete successful')
+            console.log(response);
+            Swal.fire(
+              'Deleted!',
+              'Your file has been deleted.',
+              'success',
+            )
+            this.sts = 1;
+            this.getAllData()
       },
       error => {
         console.log(error);
       }
-    );
+    ); 
+    }
+  })
 }
 
 getSomeData(productId: any){
@@ -199,19 +218,42 @@ updateProduct(productId: any){
   if(data.nameCargo == null || data.quantity == null || data.price ==null || data.img == null || 
     data.file == null || data.typeOS == null || data.display == null || data.rom == null 
     || data.externalDrive == null || data.batt == null){
-      alert('ข้อมูลไม่ครบ')
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'กรุณากรอกข้อมูลให้ถูกต้อง',
+      })
   }else{
-      this.addListService.update(productId, data)
-      .subscribe(
-        response =>{
-          alert('update successful')
-          console.log(response);
-          window.location.reload();
-        },
-        error => {
-          console.log(error);
-        }
-      );
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, update it!'
+    }).then((result) => {
+      if (result.value) {
+        this.addListService.update(productId, data)
+          .subscribe(
+            response =>{
+              Swal.fire(
+                'บันทึกสำเร็จ!',
+                'Your file has been update.',
+                'success'
+              )
+          //alert('update successful')
+          //console.log(response);
+              this.sts = 1;
+              this.getAllData()
+            },
+            error => {
+              console.log(error);
+            }
+          );
+      }
+    })
+      
   }
 }
 

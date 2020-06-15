@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { LocalStorageService } from 'angular-web-storage';
+import Swal from 'sweetalert2'
 
 const baseUrl = 'http://localhost:3000/api/employee';
 
@@ -45,7 +46,12 @@ export class EmployeeLoginComponent implements OnInit {
             //console.log(this.local.get('employee').token);
             // localStorage.setItem("Emusername",this.dataEmploy.result.username);
             // localStorage.setItem("Empassword",this.dataEmploy.result.password);
-            alert("Welcome To Employee!");
+            //alert("Welcome To Employee!");
+            Swal.fire({
+              icon: 'success',
+              title: 'Wow!...',
+              text: 'You login Success!',
+            })
             this.router.navigate(['/addlist']);
           },
           error => {

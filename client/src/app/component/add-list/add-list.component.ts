@@ -3,6 +3,7 @@ import { AddListService } from 'src/app/service/add-list.service';
 import { FormControl, FormGroup, FormArray, Validators } from '@angular/forms';
 import { Router} from '@angular/router';
 import { LocalStorageService } from 'angular-web-storage';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-add-list',
@@ -102,7 +103,14 @@ export class AddListComponent implements OnInit {
         response => {
           console.log(response);
           this.submitted = true;
-          alert("เพิ่มสำเร็จ !");
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Your work has been saved',
+            showConfirmButton: false,
+            timer: 1500
+          })
+          //alert("เพิ่มสำเร็จ !");
           //window.location.reload();
           this.dataList.reset();
         },

@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { RegisterService } from 'src/app/service/register.service';
 import { Router} from '@angular/router';
 import { LocalStorageService } from 'angular-web-storage';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-login',
@@ -52,7 +53,12 @@ export class LoginComponent implements OnInit {
               // localStorage.setItem("username",this.dataUser.result.username);
               // localStorage.setItem("password",this.dataUser.result.password);
                 this.loginPass = true;
-                alert("i see!");
+                //alert("i see!");
+                Swal.fire({
+                  icon: 'success',
+                  title: 'Wow!...',
+                  text: 'You login Success!',
+                })
                 this.router.navigate(['/productlist']);
             }
           },
