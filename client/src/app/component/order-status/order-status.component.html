@@ -1,26 +1,26 @@
-<html >
-    <!-- header navbar -->
-    <app-cus-navbar></app-cus-navbar>
+<html>
+<!-- header navbar -->
+<app-cus-navbar></app-cus-navbar>
 
 <!-- body -->
-    <!-- Search -->
-    <div class="card-header">
-        <div class="container">
-            <div class="col-md-5">
-                <div class="btn-group mx-3" role="group" aria-label="Basic example">
-                    <button type="button" class="btn btn-light" (click)="bt=0">ทั้งหมด</button>
-                    <button type="button" class="btn btn-light" (click)="bt=1">รอการยืนยัน</button>
-                    <button type="button" class="btn btn-light" (click)="bt=2">กำลังจัดส่ง</button>
-                    <button type="button" class="btn btn-light" (click)="bt=3">ที่ต้องได้รับ</button>
-                </div>
+<!-- Search -->
+<div class="card-header">
+    <div class="container">
+        <div class="col-md-5">
+            <div class="btn-group mx-3" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-light" (click)="bt=0">ทั้งหมด</button>
+                <button type="button" class="btn btn-light" (click)="bt=1">รอการยืนยัน</button>
+                <button type="button" class="btn btn-light" (click)="bt=2">กำลังจัดส่ง</button>
+                <button type="button" class="btn btn-light" (click)="bt=3">ที่ต้องได้รับ</button>
             </div>
         </div>
     </div>
+</div>
 
-    <div class="container">
-        <!-- show order -->
-        <div *ngFor="let item of getAllData() index as i">
-                <div *ngIf="checkButtonAndStatus(item.status)">
+<div class="container">
+    <!-- show order -->
+    <div *ngFor="let item of getAllData() index as i">
+        <div *ngIf="checkButtonAndStatus(item.status)">
 
             <div class="mx-auto mt-3" style="width:95%; box-shadow: 1px 1px 10px 2px rgb(141, 141, 141);">
                 <div class="card-header" style="background-color: rgba(158, 158, 158, 0.1);">
@@ -34,7 +34,9 @@
                         </div>
                         <div class="col">
                             <div class="text-right">
-                                <h5><div class="text" style="color: rgb(106, 50, 196); ">{{item.status}}</div></h5>
+                                <h5>
+                                    <div class="text" style="color: rgb(106, 50, 196); ">{{item.status}}</div>
+                                </h5>
                             </div>
                         </div>
                     </div>
@@ -44,13 +46,15 @@
                             <img [src]="item.img" class="mr-4" style="width: 100px">
                         </div>
                         <div class="col">
-                            <div >{{item.name}}</div>
+                            <div>{{item.name}}</div>
                             <div>฿{{item.price | number}} (price per piece)</div>
                             <div class="text-black-50">x{{item.quantity}} </div>
                             <hr />
                             <div class="text-right">
-                                การสั่งซื้อรวม : 
-                                <h4><div class="text-danger">฿{{item.price* item.quantity | number}}</div></h4>
+                                การสั่งซื้อรวม :
+                                <h4>
+                                    <div class="text-danger">฿{{item.price* item.quantity | number}}</div>
+                                </h4>
                             </div>
                         </div>
                     </div>
@@ -61,12 +65,8 @@
                 </div>
             </div>
             <br>
-
-
-        </div>
         </div>
     </div>
-    
-    
+</div>
 
 </html>
