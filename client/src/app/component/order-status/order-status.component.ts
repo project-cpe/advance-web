@@ -3,6 +3,7 @@ import { Router} from '@angular/router';
 import { OrderStatusService } from 'src/app/service/order-status.service';
 import { FormControl, FormGroup, FormArray, Validators } from '@angular/forms';
 import { LocalStorageService } from 'angular-web-storage';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-order-status',
@@ -67,9 +68,15 @@ export class OrderStatusComponent implements OnInit {
     this.orderStatusService.update(productId, data)
       .subscribe(
         response =>{
-          alert('คุณได้ยกเลิกการสั่งซื้อแล้ว')
+          // alert('คุณได้ยกเลิกการสั่งซื้อแล้ว')
+          Swal.fire(
+            'ยกเลิกการสั่งซื้อสำเร็จ!',
+            'Your file has been update.',
+            'success'
+          )
           console.log(response);
-          window.location.reload();
+          this.sts = 1;
+          this.getAllData();
         },
         error => {
           console.log(error);
