@@ -4,6 +4,7 @@ import { OrderStatusService } from 'src/app/service/order-status.service';
 import { RegisterService } from 'src/app/service/register.service';
 import { Router,ActivatedRoute} from '@angular/router';
 import { LocalStorageService, AngularWebStorageModule } from 'angular-web-storage';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-cart',
@@ -17,6 +18,7 @@ export class CartComponent implements OnInit {
   cartTotal:number;
   submitted = false;
   length:number = 0;
+  count:number=0;
 
   constructor(private router: Router, public local: LocalStorageService, private cartService: CartService,
     private route: ActivatedRoute, private orderStatus: OrderStatusService,private registerService :RegisterService) { }
@@ -93,7 +95,9 @@ export class CartComponent implements OnInit {
       .subscribe(
         response =>{
           console.log(response);
-          window.location.reload();
+          // window.location.reload();
+          this.sts=1;
+          this.getProductData();
         },
         error => {
           console.log(error);
@@ -132,16 +136,29 @@ export class CartComponent implements OnInit {
         },
         error => {
           console.log(error);
-          alert("Nani");
+          // alert("Nani");
         });
       this.deleteProductInCart(item._id)
-    }
-    if(this.length == 0){
-      alert("กรุณาตรวจสอบสินค้าในตระกร้า");
-    }else{
-      alert("สั่งสินค้าเสร็จสิ้น! สามารถตรวจสอบได้ที่สถานะคำสั่งซื้อ");
+      Swal.fire({
+        icon: 'success',
+        title: 'ยืนยันเสร็จสิ้น !',
+        text: 'สามารถตรวจสอบสินค้าได้ที่ยืนยันคำสั่งซื้อ !',
+        showConfirmButton: true,
+      })
+      // this.count=1;
       this.router.navigate(['/orderstatus']);
     }
+    if(this.length == 0){
+      Swal.fire({
+        icon: 'error',
+        title: 'ไม่สามารถยืนยันคำสั่งซื้อได้',
+        text: 'กรุณาตรวจสอบสินค้าในตระกร้า !',
+      })
+    }
+    // else if(this.count==1){
+    //   this.router.navigate(['/orderstatus']);
+    //   this.count=0;
+    // }
   }
 
   backToMain(){
