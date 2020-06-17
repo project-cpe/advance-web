@@ -32,9 +32,9 @@ db.mongoose
     });
 
 const getTheResult = async() => {
-    let auth = await employee.deleteAll();
-    //console.log(auth)
-    if (auth == true) {
+    const auth = await employee.deleteAll();
+    console.log(auth)
+    if (auth.status == true) {
         const data = await employee.create();
         console.log(data);
     }

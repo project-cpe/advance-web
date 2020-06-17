@@ -69,7 +69,7 @@
                     </div>
                     <div *ngIf="nameCargo.invalid && (nameCargo.dirty || nameCargo.touched)" class="alert alert-danger">
                         <div *ngIf="nameCargo.errors.required">
-                            nameCargo is required
+                            กรุณากรอกชื่อผลิตภัณฑ์
                         </div>
                     </div>
 
@@ -85,12 +85,18 @@
                     </div>
                     <div *ngIf="quantity.invalid && (quantity.dirty || quantity.touched)" class="alert alert-danger">
                         <div *ngIf="quantity.errors.required">
-                            quantity is required
+                            กรุณาใส่จำนวนของสินค้า
+                        </div>
+                        <div *ngIf="quantity.errors.min">
+                            จำนวนสินค้าไม่เท่ากับ 0 และไม่น้อยกว่า 0
                         </div>
                     </div>
                     <div *ngIf="price.invalid && (price.dirty || price.touched)" class="alert alert-danger">
                         <div *ngIf="price.errors.required">
-                            price is required
+                            กรุณาใส่ราคา
+                        </div>
+                        <div *ngIf="price.errors.min">
+                            ราคาของสินค้าไม่เท่ากับ 0 และไม่น้อยกว่า 0
                         </div>
                     </div>
 
@@ -109,7 +115,7 @@
                         </div>
                         <div *ngIf="display.invalid && (display.dirty || display.touched)" class="alert alert-danger">
                             <div *ngIf="display.errors.required">
-                                display is required
+                                กรุณากรอกจอแสดงผล
                             </div>
                         </div>
 
@@ -129,17 +135,17 @@
                         </div>
                         <div *ngIf="rom.invalid && (rom.dirty || rom.touched)" class="alert alert-danger">
                             <div *ngIf="rom.errors.required">
-                                rom is required
+                                กรุณาใส่จำนวน rom
                             </div>
                         </div>
                         <div *ngIf="externalDrive.invalid && (externalDrive.dirty || externalDrive.touched)" class="alert alert-danger">
                             <div *ngIf="externalDrive.errors.required">
-                                ExternalDrive is required
+                                กรุณาใส่จำนวนความจำภายนอก
                             </div>
                         </div>
                         <div *ngIf="batt.invalid && (batt.dirty || batt.touched)" class="alert alert-danger">
                             <div *ngIf="batt.errors.required">
-                                batt is required
+                                กรุณาใส่ความจุของแบตเตอรี่
                             </div>
                         </div>
                     </div>
@@ -156,7 +162,7 @@
                     </div>
                     <div *ngIf="file.invalid && (file.dirty || file.touched)" class="alert alert-danger">
                         <div *ngIf="file.errors.required">
-                            file is required
+                            กรุณาเลือกใส่ไฟล์รูป
                         </div>
                     </div>
 
@@ -173,7 +179,7 @@
                     </div>
                     <div *ngIf="img.invalid && (img.dirty || img.touched)" class="alert alert-danger">
                         <div *ngIf="img.errors.required">
-                            img is required
+                            กรุณาเลือกรูป
                         </div>
                     </div>
                 </form>
@@ -182,6 +188,7 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-primary" (click)="updateProduct(product._id)">บันทึกข้อมูล</button>
+                <button type="button" class="btn btn-danger" (click)="resetData()">ล้างข้อมูล</button>
             </div>
         </div>
         <!--div class="card">

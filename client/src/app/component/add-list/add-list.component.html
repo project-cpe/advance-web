@@ -21,12 +21,12 @@
             </div>
             <div *ngIf="nameCargo.invalid && (nameCargo.dirty || nameCargo.touched)" class="alert alert-danger">
                 <div *ngIf="nameCargo.errors.required">
-                    nameCargo is required
+                    กรุณากรอกชื่อผลิตภัณฑ์
                 </div>
             </div>
             <div *ngIf="type.invalid && (type.dirty || type.touched)" class="alert alert-danger">
                 <div *ngIf="type.errors.required">
-                    type is required
+                    กรุณาเลือกประเภทสินค้า
                 </div>
             </div>
 
@@ -49,12 +49,12 @@
                         </div>
                         <div *ngIf="produceDate.invalid && (produceDate.dirty || produceDate.touched)" class="alert alert-danger">
                             <div *ngIf="produceDate.errors.required">
-                                produceDate is required
+                                กรุณาใส่วันการผลิต
                             </div>
                         </div>
                         <div *ngIf="typeOS.invalid && (typeOS.dirty || typeOS.touched)" class="alert alert-danger">
                             <div *ngIf="typeOS.errors.required">
-                                type OS is required
+                                กรุณาเลือกระบบปฏิบัติการ
                             </div>
                         </div>
 
@@ -74,17 +74,17 @@
                         </div>
                         <div *ngIf="size.invalid && (size.dirty || size.touched)" class="alert alert-danger">
                             <div *ngIf="size.errors.required">
-                                size is required
+                                กรุณาใส่ขนาดของจอ
                             </div>
                         </div>
                         <div *ngIf="display.invalid && (display.dirty || display.touched)" class="alert alert-danger">
-                            <div *ngIf="typeOS.errors.required">
-                                display is required
+                            <div *ngIf="display.errors.required">
+                                กรุณากรอกจอแสดงผล
                             </div>
                         </div>
                         <div *ngIf="cpu.invalid && (cpu.dirty || cpu.touched)" class="alert alert-danger">
                             <div *ngIf="cpu.errors.required">
-                                cpu is required
+                                กรุณากรอก CPU
                             </div>
                         </div>
 
@@ -104,17 +104,17 @@
                         </div>
                         <div *ngIf="ram.invalid && (ram.dirty || ram.touched)" class="alert alert-danger">
                             <div *ngIf="ram.errors.required">
-                                ram is required
+                                กรุณากรอก ram
                             </div>
                         </div>
                         <div *ngIf="rom.invalid && (rom.dirty || rom.touched)" class="alert alert-danger">
                             <div *ngIf="rom.errors.required">
-                                rom is required
+                                กรุณากรอก rom
                             </div>
                         </div>
                         <div *ngIf="externalDrive.invalid && (externalDrive.dirty || externalDrive.touched)" class="alert alert-danger">
                             <div *ngIf="externalDrive.errors.required">
-                                ExternalDriveis required
+                                กรุณากรอกความจำภายนอก
                             </div>
                         </div>
 
@@ -134,17 +134,17 @@
                         </div>
                         <div *ngIf="camFace.invalid && (camFace.dirty || camFace.touched)" class="alert alert-danger">
                             <div *ngIf="camFace.errors.required">
-                                camFace is required
+                                กรุณากรอกกล้องดิจิตอลหน้า
                             </div>
                         </div>
                         <div *ngIf="camBack.invalid && (camBack.dirty || camBack.touched)" class="alert alert-danger">
                             <div *ngIf="camBack.errors.required">
-                                camBack is required
+                                กรุณากรอกกล้องดิจิตอลหลัง
                             </div>
                         </div>
                         <div *ngIf="batt.invalid && (batt.dirty || batt.touched)" class="alert alert-danger">
                             <div *ngIf="batt.errors.required">
-                                battery is required
+                                กรุณาใส่ความจุของแบตเตอรี่
                             </div>
                         </div>
 
@@ -178,7 +178,7 @@
                         </div>
                         <div *ngIf="twoSim.invalid && (twoSim.dirty || twoSim.touched)" class="alert alert-danger">
                             <div *ngIf="twoSim.errors.required">
-                                twoSim is required
+                                กรุณาเลือกรองรับ 2 ซิม?
                             </div>
                         </div>
 
@@ -202,25 +202,25 @@
             </div>
             <div *ngIf="codeCargo.invalid && (codeCargo.dirty || codeCargo.touched)" class="alert alert-danger">
                 <div *ngIf="codeCargo.errors.required">
-                    code Cargo is required
+                    กรุณากรอกรหัสสินค้า
                 </div>
             </div>
             <div *ngIf="quantity.invalid && (quantity.dirty || quantity.touched)" class="alert alert-danger">
                 <div *ngIf="quantity.errors.required">
-                    quantity is required
+                    กรุณาใส่จำนวนของสินค้า
+                </div>
+                <div *ngIf="quantity.errors.min">
+                    จำนวนสินค้าไม่เท่ากับ 0 และไม่น้อยกว่า 0
                 </div>
             </div>
             <div *ngIf="price.invalid && (price.dirty || price.touched)" class="alert alert-danger">
                 <div *ngIf="price.errors.required">
-                    price is required
+                    กรุณาใส่ราคาของสินค้า
+                </div>
+                <div *ngIf="price.errors.min">
+                    ราคาของสินค้าไม่เท่ากับ 0 และไม่น้อยกว่า 0
                 </div>
             </div>
-            <!--div class="form-row">
-                <div class="form-group col-md-8">
-                    <label for="image">รูปสินค้า</label>
-                    <input type="text" class="form-control" formControlName='image' placeholder="http://...." required>
-                </div>
-            </div-->
             <div class="row">
                 <div class="col-md-1">
                     รูปสินค้า
@@ -233,7 +233,7 @@
             </div>
             <div *ngIf="file.invalid && (file.dirty || file.touched)" class="alert alert-danger">
                 <div *ngIf="file.errors.required">
-                    file is required
+                    กรุณาเลือกรูปของสินค้า
                 </div>
             </div>
 
@@ -245,7 +245,7 @@
             </div>
             <div *ngIf="img.invalid && (img.dirty || img.touched)" class="alert alert-danger">
                 <div *ngIf="img.errors.required">
-                    img is required
+                    กรุณาเลือกรูปของสินค้า
                 </div>
             </div>
 

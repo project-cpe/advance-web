@@ -24,7 +24,6 @@ const makeHash = async(plainText) => {
     return result;
 }
 
-// Create and Save a new Register
 exports.create = (req, res) => {
     // Validate request
     if (!req.body.username) {
@@ -57,7 +56,8 @@ exports.create = (req, res) => {
                 })
                 .catch(err => {
                     res.status(500).send({
-                        message: err.message || "Some error occurred while creating the Register."
+                        message: err.message || "Some error occurred while creating the Register.",
+                        status: true
                     });
                 });
         })
@@ -69,23 +69,32 @@ exports.create = (req, res) => {
 };
 
 const findUser = (username) => {
-        return new Promise((resolve, reject) => {
-            Register.findOne({ usernameco: username }, (err, data) => {
-                if (err) {
-                    reject(new Error('Cannot find username!'));
+    return new Promise((resolve, reject) => {
+        Register.findOne({ usernameco: username }, (err, data) => {
+            if (err) {
+                reject(new Error('Cannot find username!'));
+            } else {
+                if (data) {
+                    resolve({
+                        id: data._id,
+                        username: data.usernameco,
+                        password: data.password,
+                        email: data.email,
+                        tel: data.tel,
+                        Hnum: data.Hnum,
+                        province: data.province,
+                        district: data.district,
+                        parish: data.parish,
+                        zip: data.zip
+                    })
                 } else {
-                    if (data) {
-                        resolve({ id: data._id, username: data.usernameco, password: data.password ,email:data.email,
-                        tel :data.tel,Hnum: data.Hnum,province: data.province,district: data.district,
-                        parish: data.parish,zip :data.zip})
-                    } else {
-                        reject(new Error('Cannot fond username!'));
-                    }
+                    reject(new Error('Cannot fond username!'));
                 }
-            })
+            }
         })
-    }
-    // Find a single Register with an id
+    })
+}
+
 exports.findUsername = async(req, res) => {
     const dataObj = {
             username: req.params.username.split(':'),
@@ -121,3 +130,20 @@ exports.findIdCustomer = async(req, res) => {
             }
         })
 }
+
+exports.getUser = async(req, res) => {
+    const dataObj = {
+        username: req.params.username.split(':')
+    }
+    Register.findOne({ usernameco: dataObj.username }, (err, data) => {
+        if (err) {
+            console.log(err)
+        } else {
+            if (data == null) {
+                res.json({ status: false })
+            } else {
+                res.json({ status: true })
+            }
+        }
+    });
+};

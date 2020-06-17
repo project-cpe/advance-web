@@ -18,8 +18,8 @@ export class AddListComponent implements OnInit {
     nameCargo: new FormControl('',[Validators.required]),
     type: new FormControl('',[Validators.required]),
     codeCargo: new FormControl('',[Validators.required]),
-    quantity: new FormControl('',[Validators.required]),
-    price: new FormControl('',[Validators.required]),
+    quantity: new FormControl('',[Validators.required,Validators.min(1)]),
+    price: new FormControl('',[Validators.required,Validators.min(1)]),
     img: new FormControl('',[Validators.required]),
     file: new FormControl('',[Validators.required]),
     detail: new FormGroup({ 

@@ -34,8 +34,8 @@ export class ShowListComponent implements OnInit {
 
   dataLists = new FormGroup({
     nameCargo: new FormControl('',[Validators.required]),
-    quantity: new FormControl('',[Validators.required]),
-    price: new FormControl('',[Validators.required]),
+    quantity: new FormControl('',[Validators.required,Validators.min(1)]),
+    price: new FormControl('',[Validators.required,Validators.min(1)]),
     img: new FormControl('',[Validators.required]),
     file: new FormControl('',[Validators.required]),
     detail: new FormGroup({ 
@@ -275,6 +275,10 @@ onChangeImg(e: any){
       }
     }
   }
+}
+
+resetData(){ 
+  this.dataLists.reset();
 }
 
 }

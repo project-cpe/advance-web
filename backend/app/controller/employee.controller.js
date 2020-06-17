@@ -6,20 +6,12 @@ const Employee = db.employee;
 
 
 const student = [{
-        idem: 1,
-        emusername: 'CPE',
-        password: '12345678',
-        firstName: 'Puwanat',
-        lastName: 'Torcheewee'
-    },
-    {
-        idem: 2,
-        emusername: 'BOY',
-        password: '11111111',
-        firstName: 'Kang',
-        lastName: 'Krub'
-    }
-];
+    idem: 1,
+    emusername: 'CPE',
+    password: '12345678',
+    firstName: 'Puwanat',
+    lastName: 'Torcheewee'
+}];
 
 const key = 'MY_KEY';
 
@@ -43,6 +35,7 @@ const makeHash = async(plainText) => {
 
 exports.create = (status) => {
     for (let i = 0; i < student.length; i++) {
+        //console.log(i)
         makeHash(student[i].password)
             .then(hashText => {
                 const employee = new Employee({
@@ -59,16 +52,16 @@ exports.create = (status) => {
                 console.log(err)
             })
     }
-
     return ({ status: "ready" });
-
 };
 
 exports.deleteAll = () => {
     Employee.deleteMany({})
         .then(data => {})
-        .catch(err => {});
-    return true;
+        .catch(err => {
+            console.log(err)
+        });
+    return { status: true }
 };
 
 const findEmploy = (emusername) => {

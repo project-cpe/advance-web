@@ -17,12 +17,12 @@
 
                     <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" class="alert alert-danger">
                         <div *ngIf="firstName.errors.required">
-                            First Name is required
+                            กรุณากรอกชื่อ
                         </div>
                     </div>
                     <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)" class="alert alert-danger">
                         <div *ngIf="lastName.errors.required">
-                            Last Name is required
+                            กรุณากรอกนามสกุล
                         </div>
                     </div>
 
@@ -42,7 +42,7 @@
                     </div>
                     <div *ngIf="sex.invalid && (sex.dirty || sex.touched)" class="alert alert-danger">
                         <div *ngIf="sex.errors.required">
-                            Sex is required
+                            กรุณาเลือกเพศ
                         </div>
                     </div>
                     <br/>
@@ -55,7 +55,7 @@
                     </div>
                     <div *ngIf="username.invalid && (username.dirty || username.touched)" class="alert alert-danger">
                         <div *ngIf="username.errors.required">
-                            Username is required
+                            กรุณากรอกชื่อผู้ใช้งาน
                         </div>
                     </div>
 
@@ -71,18 +71,18 @@
                     </div>
                     <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
                         <div *ngIf="email.errors.email">
-                            Email is incorrect!
+                            email ไม่ถูกต้อง
                         </div>
                         <div *ngIf="email.errors.required">
-                            Email is required
+                            กรุณากรอก email
                         </div>
                     </div>
                     <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
                         <div *ngIf="password.errors.required">
-                            Password is required
+                            กรุณากรอก password
                         </div>
                         <div *ngIf="password.errors.pattern">
-                            Your Password is incorrect!
+                            กรุณาใส่อย่างน้อย 8 ตัว แต่ไม่เกิน 15 ตัว
                         </div>
                     </div>
 
@@ -94,7 +94,10 @@
                     </div>
                     <div *ngIf="tel.invalid && (tel.dirty || tel.touched)" class="alert alert-danger">
                         <div *ngIf="tel.errors.required">
-                            Tel. is required
+                            กรุณากรอกหมาเลขโทรศัพท์
+                        </div>
+                        <div *ngIf="tel.errors.pattern">
+                            หมายเลขโทรศัพท์ไม่ถูกต้องกรุณากรอกให้ครบ
                         </div>
                     </div>
 
@@ -114,12 +117,12 @@
                                 </div>
                                 <div *ngIf="Hnum.invalid && (Hnum.dirty || Hnum.touched)" class="alert alert-danger">
                                     <div *ngIf="Hnum.errors.required">
-                                        Hnum is required
+                                        กรุณากรอกที่อยู่เบื้องต้น
                                     </div>
                                 </div>
                                 <div *ngIf="parish.invalid && (parish.dirty || parish.touched)" class="alert alert-danger">
                                     <div *ngIf="parish.errors.required">
-                                        Parish is required
+                                        กรุณากรอก แขวง/ตำบล
                                     </div>
                                 </div>
 
@@ -140,17 +143,17 @@
 
                                 <div *ngIf="district.invalid && (district.dirty || district.touched)" class="alert alert-danger">
                                     <div *ngIf="district.errors.required">
-                                        district is required
+                                        กรุณากรอก อำเภอ
                                     </div>
                                 </div>
                                 <div *ngIf="province.invalid && (province.dirty || province.touched)" class="alert alert-danger">
                                     <div *ngIf="province.errors.required">
-                                        Province is required
+                                        กรุณากรอก จังหวัด
                                     </div>
                                 </div>
                                 <div *ngIf="zip.invalid && (zip.dirty || zip.touched)" class="alert alert-danger">
                                     <div *ngIf="zip.errors.required">
-                                        zip is required
+                                        กรุณากรอกรหัสไปรษณีย์
                                     </div>
                                 </div>
                             </div>
@@ -165,7 +168,7 @@
                     </div>
                     <div *ngIf="check.invalid && (check.dirty || check.touched)" class="alert alert-danger">
                         <div *ngIf="check.errors.required">
-                            check is required
+                            กรุณาติ๊กถูก
                         </div>
                     </div>
 

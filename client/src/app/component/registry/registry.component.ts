@@ -11,6 +11,8 @@ import Swal from 'sweetalert2'
 })
 export class RegistryComponent implements OnInit {
   unamePattern = "^[A-Za-z0-9_-]{8,15}$";
+  dataUser:any;
+  status: any;
 
   registerForm = new FormGroup({
     firstName: new FormControl('',[Validators.required]),
@@ -20,7 +22,7 @@ export class RegistryComponent implements OnInit {
     sex: new FormControl('',[Validators.required]),
     check: new FormControl('',[Validators.required]),
     email: new FormControl('',[Validators.required, Validators.email]),
-    tel: new FormControl('',[Validators.required]),
+    tel: new FormControl('',[Validators.required, Validators.pattern("[0-9]{10}")]),
     address: new FormGroup({ 
       Hnum:new FormControl('',[Validators.required]),
       province: new FormControl('',[Validators.required]),
@@ -66,7 +68,7 @@ export class RegistryComponent implements OnInit {
       parish: this.registerForm.value.address.parish,
       zip: this.registerForm.value.address.zip,
     };
-    console.log(data);
+    //console.log(data);
     if(data.firstName == null || data.lastName == null || data.password == null || data.email == null
       || data.username == null || data.sex == null || data.check == null || data.email == null
       || data.tel == null || data.Hnum == null || data.district == null || data.province == null 
@@ -77,27 +79,49 @@ export class RegistryComponent implements OnInit {
           text: 'กรุณากรอกข้อมูลให้ครบ'
         })
       }else{
-        this.registerService.create(data)
-        .subscribe(
-          response => {
-            console.log(response);
-            this.submitted = true;
-            //alert("Save Success!")
-            Swal.fire({
-              icon: 'success',
-              title: 'Wow!...',
-              text: 'สมัครสมาชิกสำเร็จ',
-            })
-            this.router.navigate(['/home']);
-          },
-          error => {
-            console.log(error);
+        this.registerService.getUser(data.username)
+          .subscribe(
+            dataUser => {
+              console.log(dataUser);
+              this.dataUser = dataUser;
+              this.status= this.dataUser.status;
+            },
+            error => {
+              console.log(error);
+              this.status=false;
+            });
+        setTimeout(() => {
+          //console.log(this.status)
+          if(this.status !== true){
+            this.registerService.create(data)
+              .subscribe(
+                response => {
+                  //console.log(response);
+                  this.submitted = true;
+                  Swal.fire({
+                    icon: 'success',
+                    title: 'Wow!...',
+                    text: 'สมัครสมาชิกสำเร็จ',
+                  })
+                  this.router.navigate(['/home']);
+                },
+                error => {
+                  console.log(error);
+                  Swal.fire({
+                    icon: 'error',
+                    title: 'Oops! ...',
+                    text: 'บันทึกไม่สำเร็จ'
+                  })
+                });
+          }else{
             Swal.fire({
               icon: 'error',
               title: 'Oops! ...',
-              text: 'บันทึกไม่สำเร็จ'
+              text: 'มีผู้ใช้ชื่อผู้ใช้งานนี้แล้ว กรุณาเปลี่ยนชื่อ'
             })
-          });
+          }
+        }, 1500);
+        
       }
       }else {
         Swal.fire({
@@ -107,6 +131,8 @@ export class RegistryComponent implements OnInit {
         })
       }
   } 
+
+
 reset(){
   this.registerForm.reset();
 }

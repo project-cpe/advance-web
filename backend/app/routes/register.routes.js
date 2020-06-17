@@ -3,10 +3,10 @@ module.exports = app => {
 
     var router = require("express").Router();
 
-    // Create a new Tutorial
     router.post("/", register.create);
 
-    // Retrieve a single Tutorial with id
+    router.get("/:username", register.getUser);
+
     router.get("/:username/:password", register.findUsername);
 
     router.get("/:id", register.findIdCustomer);

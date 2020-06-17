@@ -3,10 +3,8 @@ module.exports = app => {
 
     var router = require("express").Router();
 
-    // Create a new Tutorial
     router.post("/", employee.create);
 
-    // Create a new Tutorial
     router.delete("/", employee.deleteAll);
 
     router.get("/:username/:password", employee.findEmployee);

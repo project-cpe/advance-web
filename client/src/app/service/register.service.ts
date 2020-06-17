@@ -19,8 +19,13 @@ export class RegisterService {
   }
 
   findByUser(username, password) {
-    console.log(username+", "+password);
+    //console.log(username+", "+password);
     return this.http.get(`${baseUrl}/${username}/${password}`);
+  }
+
+  getUser(username) {
+    //console.log(username+", "+password);
+    return this.http.get(`${baseUrl}/${username}`);
   }
 
   getAddressCustomer(id){
