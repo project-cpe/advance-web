@@ -22,8 +22,12 @@
                 <div class="col-md-6">
                     <img [src]="image" style="height: 150px;" />
                 </div>
-                <div class="col-md-2">
-                    จำนวนสินค้า <b>{{quantity}}</b> เครื่อง
+                <div class="col-md-4">
+                    ชื่อสินค้า : {{nameCargo}}
+                    <br>
+                    จำนวนสินค้า <b>{{quantity}}</b> เครื่อง 
+                    <br>
+                    สถานะ : {{status}}
                 </div>
             </div>
         </div>
@@ -87,10 +91,15 @@
               ยกเลิก
             </button>
                     </div>
-                    <div class="col-sm-1.5 text-right">
-                        <button type="button" class="btn btn-primary">
-              ยืนยันคำสั่งซื้อ
-            </button>
+                    <div class="col-sm-1.5 text-right" *ngIf="checkWaitConfirm(status)">
+                        <button type="button" class="btn btn-success" (click)="updateProduct1()"> 
+                        ยืนยันคำสั่งซื้อ
+                        </button>
+                    </div>
+                    <div class="col-sm-1.5 text-right" *ngIf="checkPakage(status)">
+                        <button type="button" class="btn btn-primary" (click)="updateProduct2()"> 
+                        ที่ต้องได้รับสินค้า
+                        </button>
                     </div>
                 </div>
             </div>
