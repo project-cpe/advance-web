@@ -44,4 +44,8 @@ export class OrderStatusService {
   findOrderAll() {
     return this.http.get(`${baseUrl}/`);
   }
+
+  deleteOrder(idProduct) {
+    return this.http.delete(`${baseUrl}/${idProduct}`);
+  }
 }

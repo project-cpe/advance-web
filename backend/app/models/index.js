@@ -11,5 +11,6 @@ db.addlist = require("./addlist.model.js")(mongoose);
 db.employee = require("./employee.model.js")(mongoose);
 db.cart = require("./cart.model.js")(mongoose);
 db.orderStatus = require("./orderStatus.model.js")(mongoose);
+db.orderHistory = require("./orderHistory.model.js")(mongoose);
 
 module.exports = db;

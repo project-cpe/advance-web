@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router} from '@angular/router';
 import { OrderStatusService } from 'src/app/service/order-status.service';
+import { OrderHistoryService } from 'src/app/service/order-history.service';
 import { FormControl, FormGroup, FormArray, Validators } from '@angular/forms';
 import { LocalStorageService } from 'angular-web-storage';
 import Swal from 'sweetalert2';
@@ -20,8 +21,14 @@ export class OrderStatusComponent implements OnInit {
   previewLoaded: boolean = false;
   status: any;
   bt:number = 0;
+  dataOrder: any;
 
-  constructor(private router: Router, private orderStatusService: OrderStatusService, public local: LocalStorageService) { }
+  constructor(
+    private router: Router, 
+    private orderStatusService: OrderStatusService,  
+    private orderHistoryService: OrderHistoryService, 
+    public local: LocalStorageService
+    ) { }
 
   ngOnInit(): void {
     console.log(this.getAllData());
@@ -50,7 +57,7 @@ export class OrderStatusComponent implements OnInit {
       response => {
         //console.log(response);
         this.alldata = response;
-        console.log(this.alldata);
+        //console.log(this.alldata);
       },
       error => {
         console.log(error);
@@ -61,7 +68,7 @@ export class OrderStatusComponent implements OnInit {
   }
 
   updateCancelProduct(productId: any){
-    console.log(productId);
+    //console.log(productId);
     const data = {
       status: "ยกเลิกการสั่งซื้อ"
     };
@@ -74,7 +81,9 @@ export class OrderStatusComponent implements OnInit {
             'Your file has been update.',
             'success'
           )
-          console.log(response);
+          this.dataOrder = response;
+          this.saveDataOrder(this.dataOrder)
+          //console.log(response);
           this.sts = 1;
           this.getAllData();
         },
@@ -97,13 +106,36 @@ export class OrderStatusComponent implements OnInit {
             'Your file has been update.',
             'success'
           )
-          console.log(response);
+          //console.log(response);
+          this.dataOrder = response;
+          this.saveDataOrder(this.dataOrder)
           this.router.navigate(['/orderhistory'])
         },
         error => {
           console.log(error);
         }
       );
+  }
+
+  saveDataOrder(dataOr: any){ 
+    //console.log(dataOr)
+    this.orderHistoryService.create(dataOr)
+      .subscribe(
+        data => {
+          //console.log(data);
+      },
+      error => {
+        console.log(error);
+      });
+      //console.log(dataOr._id);
+    this.orderStatusService.deleteOrder(dataOr._id)
+      .subscribe(
+        data => {
+          console.log(data);
+        },
+        error => {
+          console.log(error);
+        });
   }
 
   checkButtonAndStatus(status){

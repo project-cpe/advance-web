@@ -3,6 +3,7 @@ import { Router} from '@angular/router';
 //import { AddListService } from 'src/app/service/add-list.service';
 import { LocalStorageService } from 'angular-web-storage';
 import { OrderStatusService } from 'src/app/service/order-status.service';
+import { OrderHistoryService } from 'src/app/service/order-history.service';
 
 @Component({
   selector: 'app-order-history',
@@ -18,7 +19,12 @@ export class OrderHistoryComponent implements OnInit {
   alldata: any
   previewLoaded: boolean = false;
 
-  constructor(private router: Router, private local: LocalStorageService,private orderStatusService: OrderStatusService) { }
+  constructor(
+    private router: Router, 
+    private local: LocalStorageService,
+    private orderStatusService: OrderStatusService,
+    private orderHistoryService: OrderHistoryService
+    ) { }
 
   ngOnInit(): void {
   }
@@ -35,7 +41,7 @@ export class OrderHistoryComponent implements OnInit {
 
   getAllData(){
     if(this.sts == 1){
-    this.orderStatusService.findOrderUser(this.getUsername())
+    this.orderHistoryService.findOrderUser(this.getUsername())
     .subscribe(
       response => {
         //console.log(response);

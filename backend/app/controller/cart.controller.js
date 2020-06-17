@@ -45,7 +45,7 @@ exports.findAll = (req, res) => {
 };
 exports.findCartUser = (req, res) => {
     var user = req.params.user;
-    Cart.find({usernameco : user})
+    Cart.find({ usernameco: user })
         .then(data => {
             res.send(data);
         })
@@ -59,7 +59,7 @@ exports.findCartUser = (req, res) => {
 //ลบสินค้าในตระกร้า
 exports.delete = (req, res) => {
     const id = req.params.id;
-    console.log(id);
+    //console.log(id);
     Cart.findByIdAndRemove(id)
         .then(data => {
             if (!data) {

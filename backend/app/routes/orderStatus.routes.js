@@ -13,5 +13,7 @@ module.exports = app => {
 
     router.get("/get/:id", orderStatus.findSomeOrder);
 
+    router.delete("/:id", orderStatus.delete);
+
     app.use('/api/orderStatus', router);
 }

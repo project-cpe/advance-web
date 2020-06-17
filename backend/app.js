@@ -45,6 +45,7 @@ require("./app/routes/addlist.routes")(expressApp);
 require("./app/routes/employee.routes")(expressApp);
 require("./app/routes/cart.routes")(expressApp);
 require("./app/routes/orderStatus.routes")(expressApp);
+require("./app/routes/orderHistory.routes")(expressApp);
 expressApp.listen(3000, function() {
     console.log('Listening on port 3000');
 });

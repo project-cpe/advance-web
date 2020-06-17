@@ -129,11 +129,12 @@ exports.findId = (req, res) => {
     AddList.findById(req.params.id)
         .exec(function(err, addList) {
             if (err) {
-                console.log("Error retriveing item")
-                console.log(err)
+                //console.log("Error retriveing item")
+                //console.log(err)
+                res.status(404).send(err)
             } else {
                 res.json(addList)
-                console.log("retrieveing success")
+                    //console.log("retrieveing success")
             }
         })
 }

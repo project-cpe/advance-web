@@ -25,7 +25,7 @@ exports.create = (req, res) => {
         })
         .catch((err) => {
             res.status(500).send({
-                message: err.message || "Some error occurred while creating the Product.",
+                message: err.message || "Some error occurred while creating the Order.",
             });
         });
 };
@@ -57,13 +57,18 @@ exports.update = (req, res) => {
         .then((data) => {
             if (!data) {
                 res.status(404).send({
-                    message: `Cannot update Product with id=${id}. Maybe Product was not found!`,
+                    message: `Cannot update Order with id=${id}. Maybe Order was not found!`,
                 });
-            } else res.send({ message: "Product was updated successfully." });
+            } else {
+                const dataOrder = data;
+                OrderStatus.findById(dataOrder._id).then((dataOr) => {
+                    res.status(200).send(dataOr)
+                })
+            }
         })
         .catch((err) => {
             res.status(500).send({
-                message: "Error updating Product with id=" + id,
+                message: "Error updating Order with id=" + id,
             });
         });
 };
@@ -75,7 +80,7 @@ exports.findOrderAll = (req, res) => {
         })
         .catch((err) => {
             res.status(500).send({
-                message: "Error updating Product with id=" + id,
+                message: "Error updating Order with id=" + id,
             });
         });
 };
@@ -92,7 +97,29 @@ exports.findSomeOrder = (req, res) => {
         })
         .catch((err) => {
             res.status(500).send({
-                message: "Error updating Product with id=" + id,
+                message: "Error updating Order with id=" + id,
+            });
+        });
+};
+
+exports.delete = (req, res) => {
+    const id = req.params.id;
+    //console.log(id);
+    OrderStatus.findByIdAndRemove(id)
+        .then(data => {
+            if (!data) {
+                res.status(404).send({
+                    message: `Cannot delete Order with id=${id}. Maybe Order was not found!`
+                });
+            } else {
+                res.send({
+                    message: "Order was deleted successfully!"
+                });
+            }
+        })
+        .catch(err => {
+            res.status(500).send({
+                message: "Could not delete Order with id=" + id
             });
         });
 };
