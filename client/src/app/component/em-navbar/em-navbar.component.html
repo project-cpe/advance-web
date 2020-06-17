@@ -1,18 +1,24 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-        <a class="navbar-brand" aria-readonly="">Phone-Shop</a>
-
-        <ul class="navbar">
-            <button class="btn btn-outline-success" routerLink="/addlist" routerLinkActive="active" type="button">Add new product</button>
-            <button class="btn btn-outline-primary" routerLink="/showlist" routerLinkActive="active" type="button">show product list</button>
-            <button class="btn btn-outline-warning" routerLink="/orderlist" routerLinkActive="active" type="button">order list</button>
-            <button class="btn btn-outline-light" routerLink="/orderconfirm" routerLinkActive="active" type="button">order confirm</button>
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="navbar-brand" href="/addlist">Phone-Shop</a>
+            </li>
+            <li class="nav-item">
+                <button class="btn btn-dark text-primary" routerLink="/addlist" routerLinkActive="active"
+                    type="button">Add new product</button>
+                <button class="btn btn-dark text-success" routerLink="/showlist" routerLinkActive="active"
+                    type="button">show product list</button>
+                <button class="btn btn-dark text-warning" routerLink="/orderlist" routerLinkActive="active"
+                    type="button">order list</button>
+            </li>
         </ul>
-
-        <ul class="navbar-nav ml-auto">
-            <a class="btn btn-info" role="button">
-                <i class="fa fa-user-secret" aria-hidden="true"></i>
-            </a>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="btn btn-info" role="button">
+                    <i class="fa fa-user-secret" aria-hidden="true"></i>
+                </a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link" readonly>{{getUsername()}}</a>
             </li>

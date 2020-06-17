@@ -4,7 +4,7 @@
         <div class="card-body">
             <div class="row">
                 <div class="col">
-                    <span style="font-size: 20px;">ชื่อผู้สั่งซื้อสินค้า : {{user}}</span>
+                    <span style="font-size: 20px;"><b>ชื่อผู้สั่งซื้อสินค้า : {{user}}</b> </span>
                 </div>
             </div>
             <hr />
@@ -12,10 +12,12 @@
                 <div class="col">
                     ยืนยันคำสั่งซื้อหมายเลข : <b>{{orId}}</b>
                 </div>
-                <div class="col-sm-2"></div>
             </div>
             <div class="row">
-                <div class="col"><b>{{ date | date: "dd/MM/yyyy" }}</b> เวลา <b>{{ date | date: "HH:mm:ss" }}</b> น.</div>
+                <div class="col" style="font-size: 90%;">
+                    วันที่สั่งซื้อ : วันที่ {{ date | date: "dd/MM/yyyy" }} เวลา
+                    {{ date | date: "HH:mm:ss" }} น.
+                </div>
             </div>
             <hr />
             <div class="row">
@@ -23,11 +25,11 @@
                     <img [src]="image" style="height: 150px;" />
                 </div>
                 <div class="col-md-4">
-                    ชื่อสินค้า : {{nameCargo}}
+                    ชื่อสินค้า : <b>{{nameCargo}}</b>
                     <br>
-                    จำนวนสินค้า <b>{{quantity}}</b> เครื่อง 
+                    จำนวนสินค้า <b>{{quantity}}</b> เครื่อง
                     <br>
-                    สถานะ : {{status}}
+                    สถานะ : <b>{{status}}</b>
                 </div>
             </div>
         </div>
@@ -60,12 +62,18 @@
                     </div>
                     <div class="row">
                         <div class="col">
-                            ยอดรวม
+                            ค่าสินค้า
+                        </div>
+                        <div class="col text-right">
+                            ฿ {{price | number}} Bath
                         </div>
                     </div>
                     <div class="row">
                         <div class="col">
-                            ค่าจัดส่ง
+                            จำนวนสินค้า
+                        </div>
+                        <div class="col text-right">
+                            {{quantity}} เครื่อง
                         </div>
                     </div>
                     <hr />
@@ -74,7 +82,8 @@
                             ยอมรวมทั้งสิ้น
                         </div>
                         <div class="col text-right">
-                            <span class="text-danger" style="font-weight: bold; font-size: 20px;">฿ {{total | number}} bath</span>
+                            <span class="text-danger" style="font-weight: bold; font-size: 20px;">฿ {{total | number}}
+                                Bath</span>
                         </div>
                     </div>
                 </div>
@@ -88,17 +97,17 @@
                     <div class="col"></div>
                     <div class="col-sm-2 text-right">
                         <button type="button" class="btn btn-secondary">
-              ยกเลิก
-            </button>
+                            ยกเลิก
+                        </button>
                     </div>
                     <div class="col-sm-1.5 text-right" *ngIf="checkWaitConfirm(status)">
-                        <button type="button" class="btn btn-success" (click)="updateProduct1()"> 
-                        ยืนยันคำสั่งซื้อ
+                        <button type="button" class="btn btn-success" (click)="updateProduct1()">
+                            ยืนยันคำสั่งซื้อ
                         </button>
                     </div>
                     <div class="col-sm-1.5 text-right" *ngIf="checkPakage(status)">
-                        <button type="button" class="btn btn-primary" (click)="updateProduct2()"> 
-                        ที่ต้องได้รับสินค้า
+                        <button type="button" class="btn btn-primary" (click)="updateProduct2()">
+                            ที่ต้องได้รับสินค้า
                         </button>
                     </div>
                 </div>
