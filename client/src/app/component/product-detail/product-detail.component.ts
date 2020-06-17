@@ -4,7 +4,7 @@ import { AddListService } from 'src/app/service/add-list.service';
 import { LocalStorageService } from 'angular-web-storage';
 import { CartService } from 'src/app/service/cart.service';
 import { FormControl, FormGroup, FormArray, Validators } from '@angular/forms';
-
+import Swal from 'sweetalert2'
 
 
 @Component({
@@ -68,7 +68,12 @@ export class ProductDetailComponent implements OnInit {
         response => {
           console.log(response);
           this.submitted = true;
-          alert("เพิ่มสำเร็จ !");
+          Swal.fire({
+            icon: 'success',
+            title: 'เพิ่มสินค้าลงในตระกร้าสำเร็จ!',
+            showConfirmButton: false,
+            timer: 1500
+          })
           //window.location.reload();
           this.dataList.reset();
           this.router.navigate(['/productlist']);
