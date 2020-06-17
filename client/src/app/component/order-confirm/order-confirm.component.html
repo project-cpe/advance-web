@@ -1,113 +1,99 @@
 <app-em-navbar></app-em-navbar>
 <div class="container-fluid p-3 mb-2 bg-light">
-  <div class="card mx-auto" style="max-width: 50%; margin-top: 10px;">
-    <div class="card-body">
-      <div class="row">
-        <div class="col">
-          <span style="font-size: 20px;">ชื่อผู้สั่งซื้อสินค้า : </span>
+    <div class="card mx-auto" style="max-width: 50%; margin-top: 10px;">
+        <div class="card-body">
+            <div class="row">
+                <div class="col">
+                    <span style="font-size: 20px;">ชื่อผู้สั่งซื้อสินค้า : {{user}}</span>
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col">
+                    ยืนยันคำสั่งซื้อหมายเลข : <b>{{orId}}</b>
+                </div>
+                <div class="col-sm-2"></div>
+            </div>
+            <div class="row">
+                <div class="col"><b>{{ date | date: "dd/MM/yyyy" }}</b> เวลา <b>{{ date | date: "HH:mm:ss" }}</b> น.</div>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-md-6">
+                    <img [src]="image" style="height: 150px;" />
+                </div>
+                <div class="col-md-2">
+                    จำนวนสินค้า <b>{{quantity}}</b> เครื่อง
+                </div>
+            </div>
         </div>
-      </div>
-      <hr />
-      <div class="row">
-        <div class="col">
-          ยืนยันคำสั่งซื้อหมายเลข :
-        </div>
-        <div class="col-sm-2"></div>
-      </div>
-      <div class="row">
-        <div class="col">วันที่สั่งซื้อ : ../../.. เวลา ../.. น</div>
-      </div>
-      <hr />
-      <div class="row">
+    </div>
+    <div class="row mx-auto" style="max-width: 50%; margin-top: 10px;">
         <div class="col-md-6">
-          img + detail
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            ที่อยู่ในการจัดส่ง
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                        <div class="col">
+                            <i class="fa fa-home fa-2x" style="color: tomato;" aria-hidden="true"></i><b>{{address}}</b>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="col-md-2">
-          จำนวนสินค้า
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            สรุปยอดรวมทั้งสิ้น
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            ยอดรวม
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            ค่าจัดส่ง
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                        <div class="col">
+                            ยอมรวมทั้งสิ้น
+                        </div>
+                        <div class="col text-right">
+                            <span class="text-danger" style="font-weight: bold; font-size: 20px;">฿ {{total | number}} bath</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
-  <div class="row mx-auto" style="max-width: 50%; margin-top: 10px;">
-    <div class="col-md-6">
-      <div class="card">
-        <div class="card-body">
-          <div class="row">
-            <div class="col">
-              ที่อยู่ในการจัดส่ง
-            </div>
-          </div>
-          <hr />
-          <div class="row">
-            <div class="col">
-              <i
-                class="fa fa-home fa-2x"
-                style="color: tomato;"
-                aria-hidden="true"
-              ></i>
-              95/1 ม.1 ต.ห้วยเหนือ อ.ขุขันธ์ จ.ศรีสะเกษ
-            </div>
-          </div>
-          <div class="row">
-            <div class="col">
-              33140
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="card">
-        <div class="card-body">
-          <div class="row">
-            <div class="col">
-              สรุปยอดรวมทั้งสิ้น
-            </div>
-          </div>
-          <div class="row">
-            <div class="col">
-              ยอดรวม
-            </div>
-          </div>
-          <div class="row">
-            <div class="col">
-              ค่าจัดส่ง
-            </div>
-          </div>
-          <hr />
-          <div class="row">
-            <div class="col">
-              ยอมรวมทั้งสิ้น
-            </div>
-            <div class="col text-right">
-              <span
-                class="text-danger"
-                style="font-weight: bold; font-size: 20px;"
-                >฿ XX.XX bath</span
-              >
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="row" style="margin-top: 10px;">
-    <div class="col mx-auto" style="max-width: 50%;">
-      <div class="card card-body">
-        <div class="row">
-          <div class="col"></div>
-          <div class="col-sm-2 text-right">
-            <button type="button" class="btn btn-secondary">
+    <div class="row" style="margin-top: 10px;">
+        <div class="col mx-auto" style="max-width: 50%;">
+            <div class="card card-body">
+                <div class="row">
+                    <div class="col"></div>
+                    <div class="col-sm-2 text-right">
+                        <button type="button" class="btn btn-secondary">
               ยกเลิก
             </button>
-          </div>
-          <div class="col-sm-1.5 text-right">
-            <button type="button" class="btn btn-primary">
+                    </div>
+                    <div class="col-sm-1.5 text-right">
+                        <button type="button" class="btn btn-primary">
               ยืนยันคำสั่งซื้อ
             </button>
-          </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </div>

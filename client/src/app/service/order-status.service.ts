@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 const baseUrl = 'http://localhost:3000/api/orderStatus';
-
+const baseUrlget = 'http://localhost:3000/api/orderStatus/get';
 @Injectable({
   providedIn: 'root'
 })
@@ -31,6 +31,10 @@ export class OrderStatusService {
 
   findOrderUser(usernameco) {
     return this.http.get(`${baseUrl}/${usernameco}`);
+  }
+
+  findOrder(id) {
+    return this.http.get(`${baseUrlget}/${id}`);
   }
 
   update(id, data) {
