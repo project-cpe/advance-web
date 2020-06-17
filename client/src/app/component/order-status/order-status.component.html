@@ -55,7 +55,8 @@
                         </div>
                     </div>
                     <div class="text-right">
-                        <button type="button" class="btn btn-danger" (click)="updateProduct(item._id)" *ngIf="item.status == 'รอการยืนยัน'"><i class="fa fa-trash" aria-hidden="true"></i> ยกเลิก</button>
+                        <button type="button" class="btn btn-danger" (click)="updateCancelProduct(item._id)" *ngIf="item.status == 'รอการยืนยัน'"><i class="fa fa-trash" aria-hidden="true"></i> ยกเลิก</button>
+                        <button type="button" class="btn btn-success" (click)="updateGetProduct(item._id)" *ngIf="item.status == 'ที่ต้องได้รับ'"><i class="fa fa-check" aria-hidden="true"></i> ได้รับสินค้าแล้ว</button>
                     </div>
                 </div>
             </div>

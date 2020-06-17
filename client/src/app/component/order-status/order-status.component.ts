@@ -60,7 +60,7 @@ export class OrderStatusComponent implements OnInit {
     return this.alldata;
   }
 
-  updateProduct(productId: any){
+  updateCancelProduct(productId: any){
     console.log(productId);
     const data = {
       status: "ยกเลิกการสั่งซื้อ"
@@ -77,6 +77,28 @@ export class OrderStatusComponent implements OnInit {
           console.log(response);
           this.sts = 1;
           this.getAllData();
+        },
+        error => {
+          console.log(error);
+        }
+      );
+  }
+
+  updateGetProduct(productId: any){
+    console.log(productId);
+    const data = {
+      status: "เสร็จสิ้น"
+    };
+    this.orderStatusService.update(productId, data)
+      .subscribe(
+        response =>{
+          Swal.fire(
+            'Thank you!',
+            'Your file has been update.',
+            'success'
+          )
+          console.log(response);
+          this.router.navigate(['/orderhistory'])
         },
         error => {
           console.log(error);
