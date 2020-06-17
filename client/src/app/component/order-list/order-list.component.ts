@@ -24,17 +24,6 @@ export class OrderListComponent implements OnInit {
     console.log(this.bt);
   }
 
-  getUsername() {
-    let user = localStorage.getItem('Emusername');
-    return user;
-  }
-
-  Logout() {
-    localStorage.removeItem('Emusername');
-    localStorage.removeItem('Empassword');
-    this.router.navigate(['/loginem']);
-  }
-
   getAllStatus() {
     return this.orderStatusService.getAllStatusType();
   }
