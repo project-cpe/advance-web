@@ -5,7 +5,7 @@ const cors = require("cors");
 const employee = require("./app/controller/employee.controller.js");
 
 var corsOptions = {
-    origin: "http://localhost:4200"
+    origin: "http://209.97.163.81:4200"
 };
 
 
