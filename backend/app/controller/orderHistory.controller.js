@@ -43,3 +43,15 @@ exports.findOrderByUser = (req, res) => {
             });
         });
 };
+
+exports.findOrderAll = (req, res) => {
+    OrderHistory.find({})
+        .then((data) => {
+            res.send(data);
+        })
+        .catch((err) => {
+            res.status(500).send({
+                message: "Error updating Order with id=" + id,
+            });
+        });
+};
