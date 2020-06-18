@@ -1,61 +1,109 @@
 <app-em-navbar></app-em-navbar>
 <div class="container-fluid p-3 mb-2 bg-light">
-    <div class="row">
-        <div class="col text-center">
-            <div class="btn-group mx-auto" role="group" aria-label="Basic example">
-                <button type="button" class="btn btn-light" (click)="bt = 0">
+  <div class="row">
+    <div class="col text-center">
+      <div class="btn-group mx-auto" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-light" (click)="bt = 0">
           ทั้งหมด
         </button>
-                <button type="button" class="btn btn-light" (click)="bt = 1">
+        <button type="button" class="btn btn-light" (click)="bt = 1">
           รอการยืนยัน
         </button>
-                <button type="button" class="btn btn-light" (click)="bt = 2">
+        <button type="button" class="btn btn-light" (click)="bt = 2">
           กำลังจัดส่ง
         </button>
-                <button type="button" class="btn btn-light" (click)="bt = 3">
+        <button type="button" class="btn btn-light" (click)="bt = 3">
           ที่ต้องได้รับ
         </button>
-                <button type="button" class="btn btn-light text-danger" (click)="bt = 4">
+        <button
+          type="button"
+          class="btn btn-light text-success"
+          (click)="bt = 4"
+        >
+          เสร็จสิ้น
+        </button>
+        <button
+          type="button"
+          class="btn btn-light text-danger"
+          (click)="bt = 5"
+        >
           ยกเลิกการสั่งซื้อ
         </button>
-            </div>
-        </div>
+      </div>
     </div>
+  </div>
 
-    <div *ngFor="let item of getAllData(); index as i">
-        <div *ngIf="checkButtonAndStatus(item.status)">
-            <div class="card mx-auto" style="max-width: 50%; margin-top: 10px;">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col">ชื่อผู้สั่งซื้อสินค้า : {{ item.usernameco }}</div>
-                    </div>
-                    <hr />
-                    <div class="row">
-                        <div class="col">คำสั่งซื้อหมายเลข : {{ item._id }}</div>
-                    </div>
-                    <div class="row">
-                        <div class="col" style="color:grey; font-size: 80%;">
-                            วันที่สั่งซื้อ : วันที่ {{ item.date | date: "dd/MM/yyyy" }} เวลา {{ item.date | date: "HH:mm:ss" }} น.
-                        </div>
-                    </div>
-                    <hr />
-                    <div class="row">
-                        <div class="col-md-6">
-                            <img [src]="item.img" style="height: 150px;" />
-                        </div>
-                        <div class="col-md-2">Qty. {{ item.quantity }}</div>
-                        <div class="col-md-4" style="color: rgb(106, 50, 196);">
-                            {{ item.status }}
-                        </div>
-                    </div>
-                    <hr />
-                    <div class="row text-right">
-                        <div class="col">
-                            <a class="btn btn-info" href="/orderconfirm/{{item._id}}">ไปหน้ายืนยันสินค้า</a>
-                        </div>
-                    </div>
-                </div>
+  <div *ngFor="let item of getAllData(); index as i">
+    <div *ngIf="checkButtonAndStatus(item.status)">
+      <div class="card mx-auto" style="max-width: 50%; margin-top: 10px;">
+        <div class="card-body">
+          <div class="row">
+            <div class="col">ชื่อผู้สั่งซื้อสินค้า : {{ item.usernameco }}</div>
+          </div>
+          <hr />
+          <div class="row">
+            <div class="col">คำสั่งซื้อหมายเลข : {{ item._id }}</div>
+          </div>
+          <div class="row">
+            <div class="col" style="color: grey; font-size: 80%;">
+              วันที่สั่งซื้อ : วันที่ {{ item.date | date: "dd/MM/yyyy" }} เวลา
+              {{ item.date | date: "HH:mm:ss" }} น.
             </div>
+          </div>
+          <hr />
+          <div class="row">
+            <div class="col-md-6">
+              <p style="font-weight: bold;">{{ item.nameCargo }}</p>
+              <img [src]="item.img" style="height: 150px;" />
+            </div>
+            <div class="col-md-2">Qty. {{ item.quantity }}</div>
+            <div class="col-md-4" style="font-weight: bold;">
+              {{ item.status }}
+            </div>
+          </div>
+          <hr />
+          <div class="row text-right">
+            <div class="col">
+              <a class="btn btn-info" href="/orderconfirm/{{ item._id }}"
+                >ไปหน้ายืนยันสินค้า</a
+              >
+            </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
+
+  <div *ngFor="let item of getAllStatusHistory(); index as i">
+    <div *ngIf="checkButtonAndStatus(item.status)">
+      <div class="card mx-auto" style="max-width: 50%; margin-top: 10px;">
+        <div class="card-body">
+          <div class="row">
+            <div class="col">ชื่อผู้สั่งซื้อสินค้า : {{ item.usernameco }}</div>
+          </div>
+          <hr />
+          <div class="row">
+            <div class="col">คำสั่งซื้อหมายเลข : {{ item._id }}</div>
+          </div>
+          <div class="row">
+            <div class="col" style="color: grey; font-size: 80%;">
+              วันที่สั่งซื้อ : วันที่ {{ item.date | date: "dd/MM/yyyy" }} เวลา
+              {{ item.date | date: "HH:mm:ss" }} น.
+            </div>
+          </div>
+          <hr />
+          <div class="row">
+            <div class="col-md-6">
+              <p style="font-weight: bold;">{{ item.nameCargo }}</p>
+              <img [src]="item.img" style="height: 150px;" />
+            </div>
+            <div class="col-md-2">Qty. {{ item.quantity }}</div>
+            <div class="col-md-4" style="font-weight: bold;">
+              {{ item.status }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
